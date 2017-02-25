@@ -2,9 +2,9 @@
   <div>
 
     <app-header></app-header>
+    <!-- <app-nav></app-nav> -->
     <router-view></router-view>
-    <!-- <app-form></app-form> -->
-    <app-footer class="footer"></app-footer>
+    <!-- <app-footer class="footer"></app-footer> -->
 
   </div>
 </template>
@@ -13,13 +13,15 @@
     import Header from './components/Header.vue'
     import Footer from './components/Footer.vue'
     import Form from './components/Form.vue'
+    import Nav from './components/Nav.vue'
 
     export default {
 
         components: {
           'app-header': Header,
           'app-footer': Footer,
-          'app-form': Form
+          'app-form': Form,
+          'app-nav': Nav
         }
 
     }
