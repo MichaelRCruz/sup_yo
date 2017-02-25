@@ -3,12 +3,12 @@
     <div class="container">
       <div class="nav-left">
         <a class="nav-item">
-          <img src="" alt="supyo logo">
+          <img src="" alt="sup_yo logo">
         </a>
-        <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-        <a class="nav-item is-tab is-hidden-mobile">Features</a>
-        <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
-        <a class="nav-item is-tab is-hidden-mobile">About</a>
+        <router-link to="/" class="nav-item is-tab is-hidden-mobile is-active">Home</router-link>
+        <router-link to="/" class="nav-item is-tab is-hidden-mobile">People</router-link>
+        <router-link to="/form" class="nav-item is-tab is-hidden-mobile">Form</router-link>
+        <router-link to="/form" class="nav-item is-tab is-hidden-mobile"></router-link>
       </div>
       <span class="nav-toggle">
         <span></span>
