@@ -7,33 +7,33 @@
             General
           </p>
           <ul class="menu-list">
-            <router-link tag="li" to="/home/dashboard"><a>Dashboard</a></router-link>
-            <router-link tag="li" to="/home/customers"><a>Customers</a></router-link>
+            <li><router-link tag="a" to="/home/dashboard" active-class="is-active" exact>Dashboard</router-link></li>
+            <li><router-link tag="a" to="/home/customers" active-class="is-active" exact>Customers</router-link></li>
           </ul>
           <p class="menu-label">
             Administration
           </p>
           <ul class="menu-list">
-            <li><a>Team Settings</a></li>
+            <li><router-link tag="a" to="/home/team-settings" active-class="is-active" exact>Team Settings</router-link></li>
             <li>
-              <a class="is-active">Manage Your Team</a>
+              <a>Manage Your Team</a>
               <ul>
                 <li><a>Members</a></li>
                 <li><a>Plugins</a></li>
                 <li><a>Add a member</a></li>
               </ul>
             </li>
-            <li><a>Invitations</a></li>
-            <li><a>Cloud Storage Env Setting</a></li>
-            <li><a>Authentication</a></li>
+            <li><router-link tag="a" to="/home/invitations" active-class="is-active" exact>Invitations</router-link></li>
+            <li><router-link tag="a" to="/home/cloud-storage" active-class="is-active" exact>Cloud Storage Env Settings</router-link></li>
+            <li><router-link tag="a" to="/home/authentication" active-class="is-active" exact>Authentication</router-link></li>
           </ul>
           <p class="menu-label">
             Transactions
           </p>
           <ul class="menu-list">
-            <li><a>Payments</a></li>
-            <li><a>Transfers</a></li>
-            <li><a>Balance</a></li>
+            <li><router-link tag="a" to="/home/payments" active-class="is-active" exact>Payments</router-link></li>
+            <li><router-link tag="a" to="/home/transfers" active-class="is-active" exact>Transfers</router-link></li>
+            <li><router-link tag="a" to="/home/balance" active-class="is-active" exact>Balance</router-link></li>
           </ul>
         </aside>
       </div>
