@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="dummyBox">
+  <div class="dummyBoxDash">
 
   </div>
 </template>
@@ -11,10 +11,10 @@ export default {
 
 <style lang="css" scope>
 
-  #dummyBox {
+  .dummyBoxDash {
     height: 100px;
     width: 100px;
-    background-color: blue;
+    background-color: red;
     float: right;
 
   }

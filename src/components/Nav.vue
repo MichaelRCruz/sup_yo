@@ -8,7 +8,7 @@
           </p>
           <ul class="menu-list">
             <router-link tag="li" to="/home/dashboard"><a>Dashboard</a></router-link>
-            <li><a>Customers</a></li>
+            <router-link tag="li" to="/home/customers"><a>Customers</a></router-link>
           </ul>
           <p class="menu-label">
             Administration
