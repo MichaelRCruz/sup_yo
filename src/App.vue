@@ -52,7 +52,12 @@
         },
         methods: {
           submit() {
-            console.log(this.person);
+            this.$http.post('http://localhost:3000/api/peoples', this.person)
+              .then(response => {
+                console.log(response);
+              }, error => {
+                console.log(error);
+              });
           }
         },
         components: {
