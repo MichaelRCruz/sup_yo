@@ -8,7 +8,9 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 const router = new VueRouter({
-  routes
+  routes,
+  // works in developmemt mode with webpack, but the server will need to be configured to return all cases
+  mode: 'history'
 })
 
 new Vue({
