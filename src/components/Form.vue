@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="container">
     <p class="control">
       <input class="input is-info" type="text" placeholder="name" v-model="person.name">
     </p>
@@ -70,7 +70,12 @@ export default {
 </script>
 
 <style scoped>
+  .container {
+    margin: 0 auto;
+    width: 33%;
+    padding: 100px 0 0 0;
+  }
   .input {
-    width: 30%;
+    /*width: 30%;*/
   }
 </style>
