@@ -2,7 +2,8 @@
   <div>
 
     <app-header></app-header>
-    <app-form></app-form>
+    <router-view></router-view>
+    <!-- <app-form></app-form> -->
     <app-footer class="footer"></app-footer>
 
   </div>
