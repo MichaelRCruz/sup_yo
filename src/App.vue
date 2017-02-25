@@ -14,6 +14,7 @@
     import Footer from './components/Footer.vue'
     import Form from './components/Form.vue'
     import Nav from './components/Nav.vue'
+    // import Dashboard from './components/Dashboard.vue'
 
     export default {
 
@@ -22,6 +23,7 @@
           'app-footer': Footer,
           'app-form': Form,
           'app-nav': Nav
+          // 'app-dashboard': Dashboard
         }
 
     }
