@@ -1,8 +1,8 @@
 <template>
   <div>
       <app-header></app-header>
-      <!-- <app-card></app-card> -->
       <app-footer class="footer"></app-footer>
+      <div class="yo"></div>
   </div>
 </template>
 
@@ -20,5 +20,10 @@
     }
 </script>
 
-<style>
+<style scoped>
+  .yo {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+  }
 </style>
