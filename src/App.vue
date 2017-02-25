@@ -3,27 +3,32 @@
       <app-header></app-header>
 
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="name" v-model="person.name">
+          <input class="input is-info" type="text" placeholder="name" v-model="person.name">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="phone" v-model="person.phone">
+          <input class="input is-info" type="text" placeholder="phone" v-model="person.phone">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="email" v-model="person.email">
+          <input class="input is-info" type="text" placeholder="email" v-model="person.email">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="employer" v-model="person.employer">
+          <input class="input is-info" type="text" placeholder="employer" v-model="person.employer">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="github" v-model="person.github">
+          <input class="input is-info" type="text" placeholder="github" v-model="person.github">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="linkedin" v-model="person.linkedin">
+          <input class="input is-info" type="text" placeholder="linkedin" v-model="person.linkedin">
         </p>
         <p class="control">
-          <input class="input is-primary" type="text" placeholder="facebook" v-model="person.facebook">
+          <input class="input is-info" type="text" placeholder="facebook" v-model="person.facebook">
         </p>
-        <a class="button is-primary" @click="submit">Submit Data</a>
+
+        <a class="button is-info" @click="submit">Submit Data</a>
+        <a class="button is-info" @click="fetchData">Fetch Data</a>
+        <ul>
+          <li v-for="person in persons"> {{ person.name }}</li>
+        </ul>
 
         <app-footer class="footer"></app-footer>
 
@@ -47,7 +52,8 @@
               linkedin: '',
               facebook: '',
               projects: ''
-            }
+            },
+            persons: []
           };
         },
         methods: {
@@ -57,6 +63,15 @@
                 console.log(response);
               }, error => {
                 console.log(error);
+              });
+          },
+          fetchData() {
+            this.$http.get('http://localhost:3000/api/peoples')
+              .then(response => {
+                return response.json();
+              })
+              .then(data => {
+                this.persons = data;
               });
           }
         },
