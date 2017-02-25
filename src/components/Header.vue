@@ -22,7 +22,7 @@
         <a class="nav-item is-tab is-hidden-tablet">About</a>
         <a class="nav-item is-tab">
           <figure class="image is-16x16" style="margin-right: 8px;">
-            <img class="pierre" src="./assets/pierre.jpg">
+            <img class="pierre" src="../assets/pierre.jpg">
           </figure>
           Profile
         </a>

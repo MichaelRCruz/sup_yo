@@ -9,9 +9,9 @@
 </template>
 
 <script>
-    import Header from './Header.vue'
-    import Footer from './Footer.vue'
-    import Form from './Form.vue'
+    import Header from './components/Header.vue'
+    import Footer from './components/Footer.vue'
+    import Form from './components/Form.vue'
 
     export default {
 
@@ -20,7 +20,7 @@
           'app-footer': Footer,
           'app-form': Form
         }
-        
+
     }
 </script>
 
