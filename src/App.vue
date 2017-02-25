@@ -23,7 +23,7 @@
         <p class="control">
           <input class="input is-primary" type="text" placeholder="facebook" v-model="person.facebook">
         </p>
-        <a class="button is-primary">Submit Data</a>
+        <a class="button is-primary" @click="submit">Submit Data</a>
 
         <app-footer class="footer"></app-footer>
 
@@ -52,7 +52,7 @@
         },
         methods: {
           submit() {
-            
+            console.log(this.person);
           }
         },
         components: {
