@@ -2,9 +2,7 @@
   <div>
 
     <app-header></app-header>
-    <!-- <app-nav></app-nav> -->
     <router-view></router-view>
-    <!-- <app-footer class="footer"></app-footer> -->
 
   </div>
 </template>
@@ -14,7 +12,6 @@
     import Footer from './components/Footer.vue'
     import Form from './components/Form.vue'
     import Nav from './components/Nav.vue'
-    // import Dashboard from './components/Dashboard.vue'
 
     export default {
 
@@ -23,7 +20,6 @@
           'app-footer': Footer,
           'app-form': Form,
           'app-nav': Nav
-          // 'app-dashboard': Dashboard
         }
 
     }

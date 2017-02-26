@@ -7,6 +7,8 @@ import { routes } from './routes'
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
+Vue.http.options.root = 'http://localhost:3000/api/peoples'
+
 const router = new VueRouter({
   routes,
   // works in developmemt mode with webpack, but the server will need to be configured to return all cases

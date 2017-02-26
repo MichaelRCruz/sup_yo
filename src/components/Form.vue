@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$http.post('http://localhost:3000/api/peoples', this.person)
+      this.$http.post('', this.person)
         .then(response => {
           console.log(response);
         }, error => {
@@ -57,7 +57,7 @@ export default {
         });
     },
     fetchData() {
-      this.$http.get('http://localhost:3000/api/peoples')
+      this.$http.get('')
         .then(response => {
           return response.json();
         })
