@@ -1,13 +1,13 @@
 <template lang="html">
   <div class="">
-    <section class="hero is-primary is-medium">
+    <section class="hero is-primary is-small is-bold">
       <!-- Hero header: will stick at the top -->
       <div class="hero-head">
         <header class="nav">
           <div class="container">
             <div class="nav-left">
               <a class="nav-item">
-                <img src="images/bulma-type-white.png" alt="Logo">
+                <img src="" alt="Logo">
               </a>
             </div>
             <span class="nav-toggle">
@@ -30,7 +30,7 @@
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
-                  <span>Download</span>
+                  <span>Login</span>
                 </a>
               </span>
             </div>
@@ -38,33 +38,20 @@
         </header>
       </div>
 
-      <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Title
-          </h1>
-          <h2 class="subtitle">
-            Subtitle
-          </h2>
-        </div>
-      </div>
-
-      <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot">
-        <nav class="tabs">
+      <section class="hero is-large is-primary is-bold">
+        <div class="hero-body">
           <div class="container">
-            <ul>
-              <li class="is-active"><a>Overview</a></li>
-              <li><a>Modifiers</a></li>
-              <li><a>Grid</a></li>
-              <li><a>Elements</a></li>
-              <li><a>Components</a></li>
-              <li><a>Layout</a></li>
-            </ul>
+            <h1 class="title">
+              Primary bold title
+            </h1>
+            <h2 class="subtitle">
+              ...another cool thing by Michael Cruz
+            </h2>
           </div>
-        </nav>
-      </div>
+        </div>
+      </section>
+
+
     </section>
   </div>
 </template>
