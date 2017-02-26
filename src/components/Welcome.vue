@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <div>
     <section class="hero is-primary is-small is-bold">
       <!-- Hero header: will stick at the top -->
       <div class="hero-head">
@@ -26,7 +26,7 @@
                 Documentation
               </a>
               <span class="nav-item">
-                <a class="button is-primary is-inverted">
+                <a class="button is-primary is-inverted" @click="isActive">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
@@ -50,14 +50,34 @@
           </div>
         </div>
       </section>
-
-
     </section>
+
+
+    <div :class="{ isActive: isActive }" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+      </div>
+      <button class="modal-close"></button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+
+  data: function() {
+    return {
+      isActive: false
+    }
+  },
+
+  methods: {
+    isActive() {
+      this.isActive = true;
+    }
+  }
+
 }
 </script>
 
