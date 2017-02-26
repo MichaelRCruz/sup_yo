@@ -1,3 +1,5 @@
+import Welcome from './components/Welcome.vue';
+import Footer from './components/Footer.vue';
 import Form from './components/Form.vue';
 import Header from './components/Header.vue';
 import Menu from './components/Menu.vue';
@@ -13,6 +15,10 @@ import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
 
 export const routes = [
+  { path: '', name: 'footer', components: {
+    default: Welcome,
+    'footer': Footer
+  } },
   { path: '/form', name: 'header', components: {
     default: Form,
     'header': Header

@@ -4,6 +4,7 @@
     <!-- <app-header></app-header> -->
     <router-view name="header"></router-view>
     <router-view></router-view>
+    <router-view name="footer"></router-view>
 
   </div>
 </template>
@@ -13,6 +14,7 @@
     import Footer from './components/Footer.vue'
     import Form from './components/Form.vue'
     import Menu from './components/Menu.vue'
+    import Welcome from './components/Welcome.vue'
 
     export default {
 
@@ -20,7 +22,8 @@
           'app-header': Header,
           'app-footer': Footer,
           'app-form': Form,
-          'app-menu': Menu
+          'app-menu': Menu,
+          'app-welcome': Welcome
         }
 
     }
