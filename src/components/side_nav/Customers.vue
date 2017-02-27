@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="customers">
+  <div class="customers animated bounce">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile">
