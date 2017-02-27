@@ -15,7 +15,6 @@ export default {
     height: 100px;
     width: 100px;
     background-color: orange;
-    float: right;
-
+    display: flex;
   }
 </style>
