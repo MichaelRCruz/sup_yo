@@ -1,5 +1,5 @@
 <template>
-  <div class="is-primary">
+  <div class="flex-wrapper">
     <nav class="nav has-shadow">
       <div class="container">
         <div class="nav-left">
@@ -42,5 +42,15 @@
   .pierre {
     border-radius: 5px;
   }
-  
+
+  html, body {
+    height: 100%;
+  }
+
+  .flex-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
 </style>

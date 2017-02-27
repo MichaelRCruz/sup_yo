@@ -19,12 +19,16 @@ export const routes = [
     default: Welcome,
     'footer': Footer
   } },
-  { path: '/form', name: 'header', components: {
-    default: Form,
-    'header': Header
-  } },
+  // { path: '/form', name: 'header', components: {
+  //   default: Form,
+  //   'header': Header
+  // } },
   { path: '/home', component: Header, children: [
     { path: '/', component: Menu, children: [
+      { path: '/form', name: 'header', components: {
+        default: Form,
+        'header': Header
+      } },
       { path: 'dashboard', component: Dashboard },
       { path: 'customers', component: Customers },
       { path: 'team-settings', component: TeamSettings },
