@@ -93,11 +93,9 @@ export default {
 
   methods: {
     makeActive() {
-      console.log('sup, yo');
       this.activated = true;
     },
     makeInActive() {
-      console.log('sup, yo');
       this.activated = false;
     }
   }

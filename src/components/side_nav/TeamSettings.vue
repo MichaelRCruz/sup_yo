@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div id="teamSettings" class="tile is-ancestor animated fadeInRight">
+  <div id="teamSettings" class="tile is-ancestor animated bounceInUp">
     <div class="tile is-4 is-vertical is-parent">
       <div class="tile is-child box">
         <p class="title">One</p>

@@ -111,7 +111,7 @@ export default {
   };
 
   #yea {
-    background-color: red;
+    background-color: #00d1b2;
   }
 
 
