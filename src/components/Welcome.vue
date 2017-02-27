@@ -26,7 +26,7 @@
                 Documentation
               </a>
               <span class="nav-item">
-                <a class="button is-primary is-inverted">
+                <a class="button is-primary is-inverted" @click="makeActive()">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
@@ -53,7 +53,7 @@
     </section>
 
 
-    <div :class="{ isActive: activated }" class="modal">
+    <div class="modal" :class="{ 'is-active': activated }">
       <div class="modal-background"></div>
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
@@ -76,11 +76,13 @@ export default {
 
   methods: {
     makeActive() {
+      console.log('sup, yo')
       this.activated = true;
     }
   }
 
 }
+
 </script>
 
 

@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div class="customers animated bounceIn">
+  <div id="customers" class="animated bounceIn">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile">
@@ -59,7 +59,7 @@ export default {
 
 <style lang="css" scope>
 
-  .customers {
+  #customers {
     flex: 1;
     padding: 30px 30px 0 0;
   }
