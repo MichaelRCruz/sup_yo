@@ -26,7 +26,7 @@
             </figure>
             Profile
           </a>
-          <a class="nav-item is-tab">Log out</a>
+          <router-link tag="a" to="/" class="nav-item is-tab">Log out</router-link>
         </div>
       </div>
     </nav>
