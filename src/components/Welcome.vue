@@ -58,7 +58,7 @@
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
       </div>
-      <button class="modal-close"></button>
+      <button class="modal-close" @click="makeInActive()"></button>
     </div>
   </div>
 
@@ -76,8 +76,12 @@ export default {
 
   methods: {
     makeActive() {
-      console.log('sup, yo')
+      console.log('sup, yo');
       this.activated = true;
+    },
+    makeInActive() {
+      console.log('sup, yo');
+      this.activated = false;
     }
   }
 
