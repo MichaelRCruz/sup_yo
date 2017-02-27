@@ -53,10 +53,27 @@
     </section>
 
 
-    <div class="modal" :class="{ 'is-active': activated }">
+    <div class="modal animated fadeIn" :class="{ 'is-active': activated }">
       <div class="modal-background"></div>
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
+        <p class="control has-icon">
+          <input class="input" type="email" placeholder="Email">
+          <span class="icon is-small">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </p>
+        <p class="control has-icon">
+          <input class="input" type="password" placeholder="Password">
+          <span class="icon is-small">
+            <i class="fa fa-lock"></i>
+          </span>
+        </p>
+        <p class="control">
+          <router-link tag="button" to="/home" class="button is-success">
+            Login
+          </router-link>
+        </p>
       </div>
       <button class="modal-close" @click="makeInActive()"></button>
     </div>
