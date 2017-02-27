@@ -1,4 +1,5 @@
 <template>
+  <div class="fixed">
     <div id="flexBox">
       <div id="wrapper">
         <div id="container">
@@ -41,26 +42,32 @@
 
       <router-view></router-view>
     </div>
+  </div>
 </template>
 
 <script>
 
 </script>
 
-<style scope>
+<style scoped>
 
   #wrapper {
     display: inline-flex;
     padding: 40px 130px 0 20px;
+
   };
 
   #container {
     display: flex;
     flex-direction: column;
+    width: 200px;
+
+
   };
 
   #flexBox {
     display: flex;
   }
+
 
 </style>
