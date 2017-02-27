@@ -64,6 +64,7 @@
       <h6>Sixth level</h6>
       <p>Cras in nibh lacinia, venenatis nisi et, auctor urna. Donec pulvinar lacus sed diam dignissim, ut eleifend eros accumsan. Phasellus non tortor eros. Ut sed rutrum lacus. Etiam purus nunc, scelerisque quis enim vitae, malesuada ultrices turpis. Nunc vitae maximus purus, nec consectetur dui. Suspendisse euismod, elit vel rutrum commodo, ipsum tortor maximus dui, sed varius sapien odio vitae est. Etiam at cursus metus.</p>
       </ul>
+    </div>
 </template>
 
 <script>
@@ -72,5 +73,11 @@ export default {
 </script>
 
 <style lang="css" scope>
+
+.content {
+  flex: 1;
+  padding: 30px 30px 0 0;
+
+}
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="is-primary">
     <nav class="nav has-shadow">
       <div class="container">
         <div class="nav-left">
@@ -42,4 +42,5 @@
   .pierre {
     border-radius: 5px;
   }
+  
 </style>

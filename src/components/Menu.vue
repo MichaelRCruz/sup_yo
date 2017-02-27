@@ -53,7 +53,7 @@
 
   #wrapper {
     display: inline-flex;
-    padding: 40px 130px 0 20px;
+    padding: 40px 30px 0 10px;
 
   };
 
