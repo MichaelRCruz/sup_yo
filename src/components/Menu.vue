@@ -54,24 +54,23 @@
   .content-wrapper {
     overflow-y: scroll;
     flex: 1;
-  }
+  };
 
   #wrapper {
     flex-basis: 20em;
-    padding: 40px 30px 0 10px;
+    padding: 35px 0px 0 25px;
+    /*margin: 0;*/
   };
 
   #container {
     display: flex;
     flex-direction: column;
     width: 200px;
-
-
   };
 
   #main-wrapper {
     display: flex;
-  }
+  };
 
 
 </style>
