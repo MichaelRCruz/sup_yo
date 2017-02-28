@@ -1,31 +1,31 @@
 <template lang="html">
   <div class="container">
     <p class="control">
-      <input class="input is-info" type="text" placeholder="name" v-model="person.name">
+      <input class="input is-info" type="text" placeholder="name" v-model="user.name">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="phone" v-model="person.phone">
+      <input class="input is-info" type="text" placeholder="phone" v-model="user.phone">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="email" v-model="person.email">
+      <input class="input is-info" type="text" placeholder="email" v-model="user.email">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="employer" v-model="person.employer">
+      <input class="input is-info" type="text" placeholder="employer" v-model="user.employer">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="github" v-model="person.github">
+      <input class="input is-info" type="text" placeholder="github" v-model="user.github">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="linkedin" v-model="person.linkedin">
+      <input class="input is-info" type="text" placeholder="linkedin" v-model="user.linkedin">
     </p>
     <p class="control">
-      <input class="input is-info" type="text" placeholder="facebook" v-model="person.facebook">
+      <input class="input is-info" type="text" placeholder="facebook" v-model="user.facebook">
     </p>
 
     <a class="button is-info" @click="submit">Submit Data</a>
     <a class="button is-info" @click="fetchData">Fetch Data</a>
     <ul>
-      <li v-for="person in persons"> {{ person.name }}</li>
+      <li v-for="user in users"> {{ user.name }}</li>
     </ul>
   </div>
 </template>
@@ -34,7 +34,7 @@
 export default {
   data() {
     return {
-      person: {
+      user: {
         name: '',
         phone: '',
         email: '',
@@ -44,12 +44,12 @@ export default {
         facebook: '',
         projects: ''
       },
-      persons: []
+      users: []
     };
   },
   methods: {
     submit() {
-      this.$http.post('', this.person)
+      this.$http.post('', this.user)
         .then(response => {
           console.log(response);
         }, error => {
@@ -62,7 +62,7 @@ export default {
           return response.json();
         })
         .then(data => {
-          this.persons = data;
+          this.users = data;
         });
     }
   }

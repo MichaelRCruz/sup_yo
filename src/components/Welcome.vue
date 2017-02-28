@@ -42,10 +42,10 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
-              Primary bold title
+              Company Directory
             </h1>
             <h2 class="subtitle">
-              ...another cool thing by Michael Cruz
+              ...another cool thing by Michael Cruz.
             </h2>
           </div>
         </div>
