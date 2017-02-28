@@ -15,30 +15,38 @@ import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
 
 export const routes = [
-  { path: '', name: 'footer', components: {
-    default: Welcome,
-    'footer': Footer
-  } },
-  // { path: '/form', name: 'header', components: {
-  //   default: Form,
-  //   'header': Header
-  // } },
-  { path: '/home', component: Header, children: [
-    { path: '/', component: Menu, children: [
-      { path: '/form', name: 'header', components: {
-        default: Form,
-        'header': Header
-      } },
-      { path: 'dashboard', component: Dashboard },
-      { path: 'customers', component: Customers },
-      { path: 'team-settings', component: TeamSettings },
-      { path: 'manage-team', component: ManageTeam },
-      { path: 'invitations', component: Invitations },
-      { path: 'cloud-storage', component: CloudStorage },
-      { path: 'authentication', component: Authentication },
-      { path: 'payments', component: Payments },
-      { path: 'transfers', component: Transfers },
-      { path: 'balance', component: Balance }
-    ] }
-  ] }
+  { path: '',
+    name: 'footer',
+    components: {
+      default: Welcome,
+      'footer': Footer
+    }
+  },
+  { path: '/home',
+    component: Header,
+    children: [
+      { path: '/',
+        component: Menu,
+        children: [
+          { path: '/form',
+            name: 'header',
+            components: {
+            default: Form,
+            'header': Header
+            }
+          },
+          { path: 'dashboard', component: Dashboard },
+          { path: 'customers', component: Customers },
+          { path: 'team-settings', component: TeamSettings },
+          { path: 'manage-team', component: ManageTeam },
+          { path: 'invitations', component: Invitations },
+          { path: 'cloud-storage', component: CloudStorage },
+          { path: 'authentication', component: Authentication },
+          { path: 'payments', component: Payments },
+          { path: 'transfers', component: Transfers },
+          { path: 'balance', component: Balance }
+        ]
+      }
+    ]
+  }
 ]
