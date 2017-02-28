@@ -1,4 +1,5 @@
 <template lang="html">
+
   <div>
     <section class="hero is-primary is-small is-bold">
       <!-- Hero header: will stick at the top -->
@@ -52,7 +53,6 @@
       </section>
     </section>
 
-
     <div class="modal animated fadeIn" :class="{ 'is-active': activated }">
       <div class="modal-background"></div>
       <div class="modal-content">
@@ -70,9 +70,10 @@
           </span>
         </p>
         <p class="control">
-          <router-link tag="button" to="/home" class="button is-success">
-            Login
-          </router-link>
+          <!-- <router-link tag="button" to="/home" class="button is-success"> -->
+          <a href="http://localhost:3000/auth/github" class="button is-success">
+            Login With Github
+          </a>
         </p>
       </div>
       <button class="modal-close" @click="makeInActive()"></button>
