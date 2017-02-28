@@ -54,6 +54,7 @@
   .content-wrapper {
     overflow-y: scroll;
     flex: 1;
+    padding: 1px;
   };
 
   #wrapper {
