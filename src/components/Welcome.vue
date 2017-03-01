@@ -57,12 +57,14 @@
       <div class="modal-background"></div>
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
+
         <a class="button is-large animated bounceIn" href="http://localhost:3000/auth/github">
           <span class="icon is-medium">
             <i class="fa fa-github"></i>
           </span>
           <span>Login With GitHub</span>
         </a>
+        
 
       </div>
       <button class="modal-close" @click="makeInActive()"></button>
