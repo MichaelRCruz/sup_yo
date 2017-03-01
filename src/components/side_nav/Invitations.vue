@@ -3,7 +3,7 @@
 
     <a class="button is-warning" @click="fetchData">Fetch Data</a>
 
-    <div class="tile is-ancestor" v-for="user in users">
+    <div class="tile is-ancestor animated bounceIn" v-for="user in users">
       <div class="tile is-vertical is-8">
         <div class="tile">
 

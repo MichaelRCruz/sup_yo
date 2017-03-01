@@ -1,26 +1,10 @@
 <template lang="html">
   <div class="customers">
 
-    <div class="tile is-ancestor c">
-      <div class="tile is-parent">
-        <div class="tile is-child box is-3">
-          <p class="title">One</p>
-        </div>
-        <div class="tile is-child box is-3">
-          <p class="title">Two</p>
-        </div>
-        <div class="tile is-child box is-3">
-          <p class="title">Two</p>
-        </div>
-        <div class="tile is-child box is-3">
-          <p class="title">Two</p>
-        </div>
-        <div class="tile is-child box is-3">
-          <p class="title">Two</p>
-        </div>
-        <div class="tile is-child box is-3">
-          <p class="title">Two</p>
-        </div>
+    <a class="button is-warning" @click="fetchData">Fetch Data</a>
+    <div class="parentM">
+      <div class="childM" v-for="user in users">
+        {{ user.name }}
       </div>
     </div>
 
@@ -33,15 +17,7 @@
     data() {
       return {
         user: {
-          name: '',
-          github_avatar_url: '',
-          phone: '',
-          email: '',
-          employer: '',
-          github: '',
-          linkedin: '',
-          facebook: '',
-          projects: ''
+          name: ''
         },
         users: []
       };
@@ -74,7 +50,23 @@
   #customers {
     flex: 1;
     padding: 30px 30px 0 0;
-  }
+  };
+
+  .parentM {
+    display: flex;
+    flex-direction: ltr;
+    flex-wrap: wrap;
+  };
+
+  .childM {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-radius: 10px;
+    margin: 10px;
+    flex-grow: 1;
+
+  };
 
 
 </style>
