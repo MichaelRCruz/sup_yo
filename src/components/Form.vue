@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="container">
+
     <p class="control">
       <input class="input is-info" type="text" placeholder="name" v-model="user.name">
     </p>
@@ -22,12 +23,30 @@
       <input class="input is-info" type="text" placeholder="facebook" v-model="user.facebook">
     </p>
 
-    <a class="button is-info" @click="submit">Submit Data</a>
-    <a class="button is-info" @click="fetchData">Fetch Data</a>
+    <a class="button is-info" @click="submitUser">Submit User</a>
+    <a class="button is-info" @click="fetchUsers">Fetch Users</a>
     <ul>
       <li v-for="user in users"> {{ user.name }}</li>
     </ul>
-  </div>
+
+    <br>
+    <br>
+    <br>
+
+    <p class="control">
+      <input class="input is-info" type="text" placeholder="title" v-model="post.title">
+    </p>
+    <p class="control">
+      <input class="input is-info" type="text" placeholder="content" v-model="post.content">
+    </p>
+
+    <a class="button is-info" @click="submitPost">Submit Post</a>
+    <a class="button is-info" @click="fetchPosts">Fetch Posts</a>
+    <ul>
+      <li v-for="post in posts"> {{ post.title }}</li>
+    </ul>
+
+</div>
 </template>
 
 <script>
@@ -44,25 +63,47 @@ export default {
         facebook: '',
         projects: ''
       },
-      users: []
+      post: {
+        title: '',
+        content: ''
+      },
+      users: [],
+      posts: []
     };
   },
   methods: {
-    submit() {
-      this.$http.post('', this.user)
+    submitUser() {
+      this.$http.post('users', this.user)
         .then(response => {
           console.log(response);
         }, error => {
           console.log(error);
         });
     },
-    fetchData() {
-      this.$http.get('')
+    submitPost() {
+      this.$http.post('posts', this.post)
+        .then(response => {
+          console.log(response);
+        }, error => {
+          console.log(error);
+        });
+    },
+    fetchUsers() {
+      this.$http.get('users')
         .then(response => {
           return response.json();
         })
         .then(data => {
           this.users = data;
+        });
+    },
+    fetchPosts() {
+      this.$http.get('posts')
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.posts = data;
         });
     }
   }
