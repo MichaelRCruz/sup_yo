@@ -13,7 +13,8 @@
     "install": "^0.8.7",
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
-    "vue-router": "^2.2.1"
+    "vue-router": "^2.2.1",
+    "vuedraggable": "^2.8.5"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
