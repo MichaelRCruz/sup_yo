@@ -50,6 +50,7 @@
   #customers {
     flex: 1;
     padding: 30px 30px 0 0;
+    flex-grow: 1;
   };
 
   .parentM {
@@ -59,13 +60,12 @@
   };
 
   .childM {
-    height: 100px;
-    width: 100px;
+    height: 110px;
+    width: 110px;
     background-color: red;
     border-radius: 10px;
     margin: 10px;
     flex-grow: 1;
-
   };
 
 
