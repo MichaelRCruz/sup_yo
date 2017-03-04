@@ -26,7 +26,7 @@
             </figure>
             Profile
           </a>
-          <router-link tag="a" to="/" class="nav-item is-tab">Log out</router-link>
+          <a href="http://localhost:3000/logout" class="nav-item is-tab">Log out</a>
         </div>
       </div>
     </nav>
