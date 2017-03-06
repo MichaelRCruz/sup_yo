@@ -25,7 +25,7 @@
     },
     methods: {
       submit() {
-        this.$http.post('', this.user)
+        this.$http.post('users', this.user)
           .then(response => {
             console.log(response);
           }, error => {
@@ -33,7 +33,7 @@
           });
       },
       fetchData() {
-        this.$http.get('')
+        this.$http.get('users')
           .then(response => {
             return response.json();
           })
