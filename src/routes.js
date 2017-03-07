@@ -24,6 +24,14 @@ export const routes = [
   },
   { path: '/home',
     component: Header,
+    beforeEnter: (to, from, next) => {
+      if (true) {
+        next();
+      }
+      else {
+        next('/')
+      }
+    },
     children: [
       { path: '/',
         component: Menu,
