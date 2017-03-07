@@ -13,6 +13,7 @@ import Authentication from './components/side_nav/Authentication.vue';
 import Payments from './components/side_nav/Payments.vue';
 import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
+import { store } from './store/store';
 
 export const routes = [
   { path: '',
@@ -25,6 +26,7 @@ export const routes = [
   { path: '/home',
     component: Header,
     beforeEnter: (to, from, next) => {
+      // if (store.state.loggedIn) {
       if (true) {
         next();
       }

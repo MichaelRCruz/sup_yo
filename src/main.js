@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import App from './App.vue'
 import { routes } from './routes'
+import { store } from './store/store'
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -13,6 +14,13 @@ Vue.http.interceptors.push((request, next) => {
     request.credentials = true;
     next();
 });
+
+
+function login() {
+  console.log('???????', store.state.loggedIn);
+  store.state.loggedIn = true;
+  console.log('???????', store.state.loggedIn);
+}
 
 const router = new VueRouter({
   routes,
@@ -32,6 +40,7 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
+  store,
   router,
   render: h => h(App)
 })

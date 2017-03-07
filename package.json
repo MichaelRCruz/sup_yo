@@ -14,7 +14,8 @@
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
     "vue-router": "^2.2.1",
-    "vuedraggable": "^2.8.5"
+    "vuedraggable": "^2.8.5",
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
