@@ -1,3 +1,6 @@
+import Vue from 'vue';
+// import VueResource from 'vue-resource';
+
 import Welcome from './components/Welcome.vue';
 import Footer from './components/Footer.vue';
 import Form from './components/Form.vue';
@@ -15,6 +18,8 @@ import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
 import { store } from './store/store';
 
+// Vue.use(VueResource);
+
 export const routes = [
   { path: '',
     name: 'footer',
@@ -27,7 +32,16 @@ export const routes = [
     component: Header,
     beforeEnter: (to, from, next) => {
       // if (store.state.loggedIn) {
-      if (true) {
+      var session = [];
+      Vue.http.get('login')
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          console.log('TTTTTTT', data)
+          return data
+        });
+      if (data) {
         next();
       }
       else {

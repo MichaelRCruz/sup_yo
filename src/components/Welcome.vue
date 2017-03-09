@@ -64,7 +64,7 @@
           </span>
           <span>Login With GitHub</span>
         </a>
-        
+
 
       </div>
       <button class="modal-close" @click="makeInActive()"></button>
