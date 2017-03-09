@@ -1,6 +1,4 @@
 import Vue from 'vue';
-// import VueResource from 'vue-resource';
-
 import Welcome from './components/Welcome.vue';
 import Footer from './components/Footer.vue';
 import Form from './components/Form.vue';
@@ -16,9 +14,7 @@ import Authentication from './components/side_nav/Authentication.vue';
 import Payments from './components/side_nav/Payments.vue';
 import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
-import { store } from './store/store';
 
-// Vue.use(VueResource);
 
 export const routes = [
   { path: '',
@@ -31,22 +27,19 @@ export const routes = [
   { path: '/home',
     component: Header,
     beforeEnter: (to, from, next) => {
-      // if (store.state.loggedIn) {
-      var session = [];
       Vue.http.get('login')
         .then(response => {
           return response.json();
         })
         .then(data => {
-          console.log('TTTTTTT', data)
-          return data
+          console.log('TTTTTTT', data);
+          if (data) {
+            next();
+          }
+          else {
+            next('/')
+          }
         });
-      if (data) {
-        next();
-      }
-      else {
-        next('/')
-      }
     },
     children: [
       { path: '/',
