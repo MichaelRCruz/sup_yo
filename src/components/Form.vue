@@ -52,7 +52,7 @@
       </li>
     </ul>
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -70,11 +70,8 @@ export default {
         projects: ''
       },
       post: {
-        // _id: '',
         title: '',
         content: ''
-        // created_by: '',
-        // created: ''
       },
       users: [],
       posts: []
@@ -120,8 +117,9 @@ export default {
     deletePost(post) {
       this.$http.delete('posts', { body: { _id: post._id } })
         .then(response => {
+          this.posts.splice(this.posts.indexOf(post), 1)
           console.log('the delete response', response);
-        });
+        })
     }
   }
 }
