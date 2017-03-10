@@ -26,7 +26,9 @@
     <a class="button is-info" @click="submitUser">Submit User</a>
     <a class="button is-info" @click="fetchUsers">Fetch Users</a>
     <ul>
-      <li v-for="user in users"> {{ user.name }}</li>
+      <li v-for="user in users">
+        {{ user.name }}
+      </li>
     </ul>
 
     <br>
@@ -43,7 +45,11 @@
     <a class="button is-info" @click="submitPost">Submit Post</a>
     <a class="button is-info" @click="fetchPosts">Fetch Posts</a>
     <ul>
-      <li v-for="post in posts"> {{ post.title }}</li>
+      <li v-for="post in posts">
+        {{ post.title }}
+        {{ post._id }}
+        <a class="button is-danger" @click="deletePost(post)">Delete</a>
+      </li>
     </ul>
 
 </div>
@@ -64,8 +70,11 @@ export default {
         projects: ''
       },
       post: {
+        // _id: '',
         title: '',
         content: ''
+        // created_by: '',
+        // created: ''
       },
       users: [],
       posts: []
@@ -83,9 +92,9 @@ export default {
     submitPost() {
       this.$http.post('posts', this.post)
         .then(response => {
-          console.log(response);
+          console.log('success', response);
         }, error => {
-          console.log(error);
+          console.log('failure', error);
         });
     },
     fetchUsers() {
@@ -98,12 +107,20 @@ export default {
         });
     },
     fetchPosts() {
+      var self = this
       this.$http.get('posts')
         .then(response => {
           return response.json();
         })
         .then(data => {
-          this.posts = data;
+          self.posts = data;
+          console.log('fetchedPosts:', data)
+        });
+    },
+    deletePost(post) {
+      this.$http.delete('posts', { body: { _id: post._id } })
+        .then(response => {
+          console.log('the delete response', response);
         });
     }
   }

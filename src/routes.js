@@ -26,21 +26,17 @@ export const routes = [
   },
   { path: '/home',
     component: Header,
+
     beforeEnter: (to, from, next) => {
       Vue.http.get('login')
         .then(response => {
           return response.json();
         })
         .then(data => {
-          console.log('TTTTTTT', data);
-          if (data) {
-            next();
-          }
-          else {
-            next('/')
-          }
+          data ? next() : next({ path: '/' });
         });
     },
+
     children: [
       { path: '/',
         component: Menu,
