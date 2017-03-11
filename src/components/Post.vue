@@ -9,27 +9,27 @@
 
 <script>
 
-  export default {
-    data() {
-      return {
-        posts: []
-      };
-    },
-    beforeMount() {
-      this.fetchData();
-    },
-    methods: {
-      fetchData() {
-        this.$http.get('posts')
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            this.posts = data;
-          });
-      }
-    }
-  }
+  // export default {
+  //   data() {
+  //     return {
+  //       posts: []
+  //     };
+  //   },
+  //   beforeMount() {
+  //     this.fetchData();
+  //   },
+  //   methods: {
+  //     fetchData() {
+  //       this.$http.get('posts')
+  //         .then(response => {
+  //           return response.json();
+  //         })
+  //         .then(data => {
+  //           this.posts = data;
+  //         });
+  //     }
+  //   }
+  // }
 </script>
 
 
