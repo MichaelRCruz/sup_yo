@@ -5,8 +5,8 @@ import Form from './components/Form.vue';
 import Header from './components/Header.vue';
 import Menu from './components/Menu.vue';
 import Dashboard from './components/side_nav/Dashboard.vue';
-import Customers from './components/side_nav/Customers.vue';
-// import Post from './components/Post.vue';
+import Weblog from './components/side_nav/Weblog.vue';
+import Post from './components/Post.vue';
 import TeamSettings from './components/side_nav/TeamSettings.vue';
 import ManageTeam from './components/side_nav/ManageTeam.vue';
 import Invitations from './components/side_nav/Invitations.vue';
@@ -43,8 +43,8 @@ export const routes = [
             }
           },
           { path: 'dashboard', component: Dashboard },
-          { path: 'customers', component: Customers },
-          // { path: 'customers/1', component: Post },
+          { path: 'weblog', component: Weblog },
+          { path: 'weblog/:id', component: Post },
           { path: 'team-settings', component: TeamSettings },
           { path: 'manage-team', component: ManageTeam },
           { path: 'invitations', component: Invitations },

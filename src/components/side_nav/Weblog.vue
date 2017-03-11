@@ -1,8 +1,8 @@
 <template lang="html">
-  <div class="customers">
+  <div class="weblog">
 
     <div class="parentM">
-      <router-link to="customers/1" tag="div" class="childM" v-for="post in posts">
+      <router-link :to="'weblog/' + post._id" tag="div" class="childM" v-for="post in posts">
         {{ post._id }}
       </router-link>
     </div>
@@ -16,6 +16,7 @@
   export default {
     data() {
       return {
+
         posts: []
       };
     },
@@ -37,9 +38,9 @@
 </script>
 
 
-<style lang="css" scope>
+<style lang="css" scoped>
 
-  #customers {
+  #weblog {
     flex: 1;
     padding: 30px 30px 0 0;
     flex-grow: 1;
