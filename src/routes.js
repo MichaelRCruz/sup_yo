@@ -17,13 +17,6 @@ import Balance from './components/side_nav/Balance.vue';
 
 
 export const routes = [
-  { path: '',
-    name: 'footer',
-    components: {
-      default: Welcome,
-      'footer': Footer
-    }
-  },
   { path: '/home',
     component: Header,
 
@@ -61,5 +54,13 @@ export const routes = [
         ]
       }
     ]
+  },
+  
+  { path: '',
+    name: 'footer',
+    components: {
+      default: Welcome,
+      'footer': Footer
+    }
   }
 ]

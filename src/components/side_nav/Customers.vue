@@ -1,11 +1,10 @@
 <template lang="html">
   <div class="customers">
 
-    <a class="button is-warning" @click="fetchData">Fetch Data</a>
     <div class="parentM">
-      <div class="childM" v-for="user in users">
-        {{ user.name }}
-      </div>
+      <router-link to="customers/1" tag="div" class="childM" v-for="post in posts">
+        {{ post._id }}
+      </router-link>
     </div>
 
   </div>
@@ -17,28 +16,20 @@
   export default {
     data() {
       return {
-        user: {
-          name: ''
-        },
-        users: []
+        posts: []
       };
     },
+    beforeMount() {
+      this.fetchData();
+    },
     methods: {
-      submit() {
-        this.$http.post('users', this.user)
-          .then(response => {
-            console.log(response);
-          }, error => {
-            console.log(error);
-          });
-      },
       fetchData() {
-        this.$http.get('users')
+        this.$http.get('posts')
           .then(response => {
             return response.json();
           })
           .then(data => {
-            this.users = data;
+            this.posts = data;
           });
       }
     }
