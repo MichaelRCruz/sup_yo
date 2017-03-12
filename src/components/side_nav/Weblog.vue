@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="weblog">
 
-    <div class="parentM">
-      <router-link :to="'weblog/' + post._id" tag="div" class="childM" v-for="post in posts">
+    <div class="parent">
+      <router-link :to="'weblog/' + post._id" tag="div" class="child" v-for="post in posts">
         {{ post._id }}
       </router-link>
     </div>
@@ -46,13 +46,13 @@
     flex-grow: 1;
   };
 
-  .parentM {
+  .parent {
     display: flex;
     flex-direction: ltr;
     flex-wrap: wrap;
   };
 
-  .childM {
+  .child {
     height: 110px;
     width: 110px;
     background-color: red;
