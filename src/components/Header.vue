@@ -39,9 +39,6 @@
 </script>
 
 <style>
-  .pierre {
-    border-radius: 5px;
-  }
 
   html, body {
     height: 100%;
