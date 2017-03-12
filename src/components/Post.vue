@@ -5,17 +5,18 @@
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+            <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
+            <img :src="user.github_avatar_url" alt="Image">
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+              <strong>{{ user.name }}</strong> <small>{{ user.github_user_name }}</small> <small>31m</small>
               <br>
               <br>
-              <h1>{{ post.title }}</h1>
-              {{ post.content }}
+              <h1>{{ userPost.title }}</h1>
+              {{ userPost.content }}
             </p>
           </div>
           <nav class="level">
@@ -44,33 +45,44 @@
   export default {
     data() {
       return {
-          post: {
-            _id: this.$route.params.id,
-            title: "",
-            content: ""
-          }
+        userPost: {
+          _id: this.$route.params.id,
+          title: "",
+          content: "",
+          created_by: ""
+        },
+        user: {
+          name: "",
+          github_user_name: "",
+          github_profile_url: "",
+          github_avatar_url: ""
+        }
       }
     },
     beforeMount() {
-      // this.fetchData();
-      this.$http.get("posts/" + this.post._id)
+
+      this.$http.get("posts/" + this.userPost._id)
         .then(response => {
           return response.json();
         })
         .then(data => {
-          this.post = data;
-        });
+          this.userPost = data;
+
+          return this.userPost.created_by
+        })
+        .then(user_id => {
+          this.$http.get("users/" + user_id)
+            .then(response => {
+              return response.json();
+            })
+            .then(data => {
+              this.user = data;
+            });
+        })
     },
+
     methods: {
-      // fetchData() {
-      //   this.$http.get("posts/" + this.post._id)
-      //     .then(response => {
-      //       return response.json();
-      //     })
-      //     .then(data => {
-      //       this.post = data;
-      //     });
-      // }
+
     }
   };
 
