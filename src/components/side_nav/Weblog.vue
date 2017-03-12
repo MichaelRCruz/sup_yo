@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="weblog">
 
-    <div class="parent">
-      <router-link :to="'weblog/' + post._id" tag="div" class="child" v-for="post in posts">
+    <ul class="parent">
+      <router-link :to="'weblog/' + post._id" tag="li" class="child" v-for="post in posts">
         {{ post._id }}
       </router-link>
-    </div>
+    </ul>
 
   </div>
 </template>
@@ -45,21 +45,5 @@
     padding: 30px 30px 0 0;
     flex-grow: 1;
   };
-
-  .parent {
-    display: flex;
-    flex-direction: ltr;
-    flex-wrap: wrap;
-  };
-
-  .child {
-    height: 110px;
-    width: 110px;
-    background-color: red;
-    border-radius: 10px;
-    margin: 10px;
-    flex-grow: 1;
-  };
-
 
 </style>
