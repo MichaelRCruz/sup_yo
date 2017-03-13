@@ -20,9 +20,9 @@
           <a class="nav-item is-tab is-hidden-tablet">Features</a>
           <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
           <a class="nav-item is-tab is-hidden-tablet">About</a>
-          <a class="nav-item is-tab" @click="fetchData()">
+          <a class="nav-item is-tab">
             <figure class="image is-16x16" style="margin-right: 8px;">
-              <img :src="user.github_avatar_url">
+              <img :src="this.github_avatar_url">
             </figure>
             Profile
           </a>
@@ -30,7 +30,9 @@
         </div>
       </div>
     </nav>
+
     <router-view></router-view>
+
   <div>
 </template>
 
@@ -39,14 +41,12 @@
   export default {
     data() {
       return {
-        user: {
           github_avatar_url: ""
-        }
       }
     },
     beforeMount() {
       console.log('making request')
-      this.$http.get('users/profileShow')
+      this.$http.get('users/profile')
         .then(response => {
           return response.json();
         })
