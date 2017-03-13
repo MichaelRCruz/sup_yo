@@ -3,7 +3,7 @@
 
     <ul class="parent">
       <router-link :to="'weblog/' + post._id" tag="li" class="child" v-for="post in posts">
-        {{ post._id }}
+        {{ post.title }}
       </router-link>
     </ul>
 
