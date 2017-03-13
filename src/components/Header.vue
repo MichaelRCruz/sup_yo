@@ -22,7 +22,7 @@
           <a class="nav-item is-tab is-hidden-tablet">About</a>
           <a class="nav-item is-tab">
             <figure class="image is-16x16" style="margin-right: 8px;">
-              <img :src="this.github_avatar_url">
+              <img :src="user.github_avatar_url">
             </figure>
             Profile
           </a>
@@ -41,7 +41,9 @@
   export default {
     data() {
       return {
+        user: {
           github_avatar_url: ""
+        }
       }
     },
     beforeMount() {
