@@ -6,13 +6,13 @@
         <div class="media-left">
           <figure class="image is-64x64">
             <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
-            <img :src="postAuthor.github_avatar_url" alt="Image">
+            <img :src="userPost.created_by.github_avatar_url" alt="Image">
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{ postAuthor.name }}</strong> <small>{{ postAuthor.github_user_name }}</small> <small>31m</small>
+              <strong>{{ userPost.created_by.name }}</strong> <small>{{ userPost.created_by.github_user_name }}</small> <small>31m</small>
               <h1>{{ userPost.title }}</h1>
               {{ userPost.content }}
             </p>
@@ -56,7 +56,7 @@
     <article class="media">
       <figure class="media-left">
         <p class="image is-32x32">
-          <img :src="postAuthor.github_avatar_url">
+          <img :src="userPost.created_by.github_avatar_url">
         </p>
       </figure>
       <div class="media-content">
@@ -74,7 +74,6 @@
 
 
 <script>
-
   export default {
     data() {
       return {
@@ -83,12 +82,6 @@
           title: "",
           content: "",
           created_by: ""
-        },
-        postAuthor: {
-          name: "",
-          github_user_name: "",
-          github_profile_url: "",
-          github_avatar_url: ""
         },
         comment: {
           content: "",
@@ -105,16 +98,6 @@
         })
         .then(data => {
           this.userPost = data;
-          return this.userPost.created_by
-        })
-        .then(user_id => {
-          this.$http.get("users/" + user_id)
-            .then(response => {
-              return response.json();
-            })
-            .then(data => {
-              this.postAuthor = data;
-            });
         })
       this.$http.get('comments/' + this.$route.params.id)
         .then(response => {
@@ -124,7 +107,6 @@
           this.comments = data;
         })
     },
-
     methods: {
       submitComment() {
         this.$http.post('comments', this.comment)
@@ -136,16 +118,13 @@
       }
     }
   };
-
 </script>
 
 
 <style lang="css" scoped>
-
   #post {
     flex: 1;
     padding: 30px 30px 50px 0;
     flex-grow: 1;
   };
-
 </style>
