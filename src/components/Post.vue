@@ -37,13 +37,14 @@
     <article class="media" v-for="comment in comments">
       <figure class="media-left">
         <p class="image is-32x32">
-          <img src="http://bulma.io/images/placeholders/128x128.png">
+          <img :src="comment.created_by.github_avatar_url">
         </p>
       </figure>
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>Barbara Middleton</strong>
+            <strong>{{ comment.created_by.name }}</strong>
+            <small>{{ comment.created_by.github_user_name }}</small>
             <br>
             {{ comment.content }}
             <br>
