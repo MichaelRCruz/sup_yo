@@ -138,14 +138,12 @@
       }
     },
     beforeMount() {
-
       this.$http.get("posts/" + this.userPost._id)
         .then(response => {
           return response.json();
         })
         .then(data => {
           this.userPost = data;
-
           return this.userPost.created_by
         })
         .then(user_id => {

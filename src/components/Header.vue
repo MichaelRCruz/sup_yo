@@ -20,9 +20,9 @@
           <a class="nav-item is-tab is-hidden-tablet">Features</a>
           <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
           <a class="nav-item is-tab is-hidden-tablet">About</a>
-          <a class="nav-item is-tab">
+          <a class="nav-item is-tab" @click="fetchData()">
             <figure class="image is-16x16" style="margin-right: 8px;">
-              <img class="pierre" src="../assets/pierre.jpg">
+              <img :src="user.github_avatar_url">
             </figure>
             Profile
           </a>
@@ -35,6 +35,26 @@
 </template>
 
 <script>
+
+  export default {
+    data() {
+      return {
+        user: {
+          github_avatar_url: ""
+        }
+      }
+    },
+    beforeMount() {
+      console.log('making request')
+      this.$http.get('users/profileShow')
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.user = data;
+        });
+    }
+  }
 
 </script>
 
