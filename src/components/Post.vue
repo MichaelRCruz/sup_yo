@@ -6,13 +6,13 @@
         <div class="media-left">
           <figure class="image is-64x64">
             <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
-            <img :src="user.github_avatar_url" alt="Image">
+            <img :src="postAuthor.github_avatar_url" alt="Image">
           </figure>
         </div>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{ user.name }}</strong> <small>{{ user.github_user_name }}</small> <small>31m</small>
+              <strong>{{ postAuthor.name }}</strong> <small>{{ postAuthor.github_user_name }}</small> <small>31m</small>
               <h1>{{ userPost.title }}</h1>
               {{ userPost.content }}
             </p>
@@ -34,9 +34,9 @@
       </article>
     </div>
 
-    <article class="media">
+    <article class="media" v-for="comment in comments">
       <figure class="media-left">
-        <p class="image is-64x64">
+        <p class="image is-32x32">
           <img src="http://bulma.io/images/placeholders/128x128.png">
         </p>
       </figure>
@@ -45,7 +45,7 @@
           <p>
             <strong>Barbara Middleton</strong>
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porta eros lacus, nec ultricies elit blandit non. Suspendisse pellentesque mauris sit amet dolor blandit rutrum. Nunc in tempus turpis.
+            {{ comment.content }}
             <br>
             <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
           </p>
@@ -54,8 +54,8 @@
 
     <article class="media">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <img src="http://bulma.io/images/placeholders/128x128.png">
+        <p class="image is-32x32">
+          <img :src="postAuthor.github_avatar_url">
         </p>
       </figure>
       <div class="media-content">
@@ -83,7 +83,7 @@
           content: "",
           created_by: ""
         },
-        user: {
+        postAuthor: {
           name: "",
           github_user_name: "",
           github_profile_url: "",
@@ -93,7 +93,8 @@
           content: "",
           belongs_to: this.$route.params.id,
           created_by: ""
-        }
+        },
+        comments: []
       }
     },
     beforeMount() {
@@ -111,8 +112,15 @@
               return response.json();
             })
             .then(data => {
-              this.user = data;
+              this.postAuthor = data;
             });
+        })
+      this.$http.get('comments/' + this.$route.params.id)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.comments = data;
         })
     },
 

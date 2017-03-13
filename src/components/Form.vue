@@ -104,13 +104,12 @@ export default {
         });
     },
     fetchPosts() {
-      var self = this
       this.$http.get('posts')
         .then(response => {
           return response.json();
         })
         .then(data => {
-          self.posts = data;
+          this.posts = data;
           console.log('fetchedPosts:', data)
         });
     },

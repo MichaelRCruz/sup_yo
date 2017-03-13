@@ -47,7 +47,6 @@
       }
     },
     beforeMount() {
-      console.log('making request')
       this.$http.get('users/profileShow')
         .then(response => {
           return response.json();
