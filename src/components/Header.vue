@@ -46,7 +46,7 @@
     },
     beforeMount() {
       console.log('making request')
-      this.$http.get('users/profile')
+      this.$http.get('users/userProfile')
         .then(response => {
           return response.json();
         })
