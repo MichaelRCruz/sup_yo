@@ -1,11 +1,51 @@
 <template lang="html">
-  <div class="weblog">
+  <div id="weblog">
 
-    <ul class="parent">
-      <router-link :to="'weblog/' + post._id" tag="li" class="child" v-for="post in posts">
+    <!-- <ul>
+      <router-link :to="'weblog/' + post._id" tag="li" v-for="post in posts">
         {{ post.title }}
       </router-link>
-    </ul>
+    </ul> -->
+    <a class="button" @click="activate()">Create Post</a>
+    
+    <article class="media" v-for="post in posts">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <!-- <img src="http://bulma.io/images/placeholders/128x128.png"> -->
+          <img :src="post.created_by.github_avatar_url">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ post.created_by.name }}</strong> <small>{{ post.created_by.github_user_name }}</small> <small>31m</small>
+            <br>
+            <router-link class="title is-3" :to="'weblog/' + post._id" tag="p">
+              {{ post.title }}
+            <!-- <p class="title is-3">{{ post.title }}</p> -->
+            </router-link>
+          </p>
+        </div>
+        <nav class="level">
+          <div class="level-left">
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-reply"></i></span>
+            </a>
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+            </a>
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-heart"></i></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="media-right">
+        <button class="delete"></button>
+      </div>
+    </article>
+
+
     <div class="modal" :class="{ 'is-active': activated }">
       <div class="modal-background"></div>
       <div class="modal-content">
@@ -68,20 +108,16 @@
             <button class="button is-link" @click="disable()">Cancel</button>
           </p>
         </div>
-
-
-
       </div>
       <button class="modal-close" @click="disable()"></button>
     </div>
-    <a class="button" @click="activate()">Create Post</a>
+
 
   </div>
 </template>
 
 
 <script>
-
   export default {
     data() {
       return {
@@ -94,34 +130,30 @@
       };
     },
     beforeMount() {
-      this.fetchData();
+      this.$http.get('posts')
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.posts = data;
+        });
     },
     methods: {
-      fetchData() {
-        this.$http.get('posts')
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            this.posts = data;
-          });
-      },
       submitPost() {
         this.$http.post('posts', this.post)
           .then(response => {
             return response.json()
           })
           .then(data => {
-            console.log('hello')
             this.posts.push(data);
             this.disable();
-            console.log(this.posts);
           }, error => {
             console.log('failure', error);
           });
       },
       activate() {
         this.activated = true
+        console.log(this.posts[0].created_by.github_avatar_url)
       },
       disable() {
         this.activated = false
