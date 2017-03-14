@@ -34,7 +34,7 @@
         </nav>
       </div>
       <div class="media-right">
-        <button class="delete"></button>
+        <button class="delete" @click="deletePost(post)"></button>
       </div>
     </article>
 
@@ -142,6 +142,13 @@
           }, error => {
             console.log('failure', error);
           });
+      },
+      deletePost(post) {
+        this.$http.delete('posts', { body: { _id: post._id } })
+          .then(response => {
+            this.posts.splice(this.posts.indexOf(post), 1)
+            console.log('the delete response', response);
+          })
       },
       activate() {
         this.activated = true
