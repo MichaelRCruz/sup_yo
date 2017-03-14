@@ -111,7 +111,12 @@
       submitComment() {
         this.$http.post('comments', this.comment)
           .then(response => {
-            console.log('success', response);
+            return response.json();
+          })
+          .then(data => {
+            this.comments.push(data);
+            this.comment.content = "";
+            console.log('success', data);
           }, error => {
             console.log('failure', error);
           });
