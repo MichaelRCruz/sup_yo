@@ -1,5 +1,6 @@
 <template>
   <div class="flex-wrapper">
+
     <nav class="nav has-shadow">
       <div class="container">
         <div class="nav-left">
@@ -63,12 +64,12 @@
 
   html, body {
     height: 100%;
-  }
+  };
 
   .flex-wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
-  }
+  };
 
 </style>

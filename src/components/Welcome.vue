@@ -2,7 +2,6 @@
 
   <div>
     <section class="hero is-primary is-small is-bold">
-      <!-- Hero header: will stick at the top -->
       <div class="hero-head">
         <header class="nav">
           <div class="container">

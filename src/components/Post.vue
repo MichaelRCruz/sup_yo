@@ -1,5 +1,6 @@
 <template lang="html">
-  <div id="post" class="animated fadeInRight">
+  <div id="post" class="animated bounceIn">
+
 
     <div class="box">
       <article class="media">
@@ -20,13 +21,13 @@
           <nav class="level">
             <div class="level-left">
               <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                <span class="icon is-medium"><i class="fa fa-reply"></i></span>
               </a>
               <!-- <a class="level-item">
                 <span class="icon is-small"><i class="fa fa-retweet"></i></span>
               </a> -->
               <a class="level-item">
-                <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                <span class="icon is-medium"><i class="fa fa-heart"></i></span>
               </a>
             </div>
           </nav>
@@ -34,7 +35,7 @@
       </article>
     </div>
 
-    <article class="media" v-for="comment in comments">
+    <article class="media animated bounceIn" v-for="comment in comments">
       <figure class="media-left">
         <p class="image is-32x32">
           <img :src="comment.created_by.github_avatar_url">
@@ -48,7 +49,7 @@
             <br>
             {{ comment.content }}
             <br>
-            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove" v-if="$store.state.session._id == comment.created_by._id" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
+            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove is-warning" v-if="$store.state.session._id == comment.created_by._id" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
           </p>
         </div>
     </article>
@@ -64,10 +65,11 @@
           <textarea class="textarea" placeholder="Add a comment..." v-model="comment.content"></textarea>
         </p>
         <p class="control">
-          <button class="button is-primary" @click="submitComment()">Post comment</button>
+          <button class="button is-info" @click="submitComment()">Post comment</button>
         </p>
       </div>
     </article>
+
 
   </div>
 </template>
@@ -78,6 +80,7 @@
   export default {
     data() {
       return {
+        activated: false,
         userPost: {
           _id: this.$route.params.id,
           title: "",
@@ -116,6 +119,7 @@
           })
           .then(data => {
             this.comments.push(data);
+            this.activated = true;
             this.comment.content = "";
           }, error => {
             console.log('failure', error);
