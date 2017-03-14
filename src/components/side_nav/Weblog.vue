@@ -31,7 +31,7 @@
           </span>
           <span class="help is-danger">This email is invalid</span>
         </p> -->
-        <label class="label" v-model="post.content">Subject</label>
+        <label class="label">Subject</label>
         <p class="control">
           <span class="select">
             <select>
@@ -109,8 +109,13 @@
       submitPost() {
         this.$http.post('posts', this.post)
           .then(response => {
+            return response.json()
+          })
+          .then(data => {
+            console.log('hello')
+            this.posts.push(data);
             this.disable();
-            console.log('success', response);
+            console.log(this.posts);
           }, error => {
             console.log('failure', error);
           });
