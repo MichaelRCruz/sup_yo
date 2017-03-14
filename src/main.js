@@ -23,16 +23,6 @@ const router = new VueRouter({
   mode: 'history'
 })
 
-// router.beforeEach((to, from, next) => {
-//   console.log('global beforeEach');
-//   if (true) {
-//     next()
-//   } else {
-//     next(false)
-//   }
-// });
-
-
 new Vue({
   el: '#app',
   store,
