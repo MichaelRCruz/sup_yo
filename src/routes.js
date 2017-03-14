@@ -15,6 +15,7 @@ import Authentication from './components/side_nav/Authentication.vue';
 import Payments from './components/side_nav/Payments.vue';
 import Transfers from './components/side_nav/Transfers.vue';
 import Balance from './components/side_nav/Balance.vue';
+import { store } from './store/store';
 
 
 export const routes = [
@@ -22,12 +23,17 @@ export const routes = [
     component: Header,
 
     beforeEnter: (to, from, next) => {
-      Vue.http.get('login')
+      Vue.http.get('session')
         .then(response => {
           return response.json();
         })
         .then(data => {
-          data ? next() : next({ path: '/' });
+          if (data) {
+            next();
+            store.state.session = data;
+          } else {
+            next({ path: '/' })
+          }
         });
     },
 

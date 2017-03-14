@@ -6,7 +6,7 @@
         <div class="media-left">
           <figure class="image is-64x64">
             <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
-            <img :src="userPost.created_by.github_avatar_url" alt="Image">
+            <img :src="userPost.created_by.github_avatar_url" alt="http://bulma.io/images/placeholders/128x128.png">
           </figure>
         </div>
         <div class="media-content">
@@ -48,7 +48,7 @@
             <br>
             {{ comment.content }}
             <br>
-            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove" v-if="true" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
+            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove" v-if="$store.state.session._id == comment.created_by._id" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
           </p>
         </div>
     </article>
@@ -74,6 +74,7 @@
 
 
 <script>
+  import { store } from '../store/store';
   export default {
     data() {
       return {
@@ -116,7 +117,6 @@
           .then(data => {
             this.comments.push(data);
             this.comment.content = "";
-            console.log('success', data);
           }, error => {
             console.log('failure', error);
           });
@@ -125,7 +125,6 @@
         this.$http.delete('comments', { body: { _id: comment._id } })
           .then(response => {
             this.comments.splice(this.comments.indexOf(comment), 1)
-            console.log('the delete response', response);
           })
       }
     }

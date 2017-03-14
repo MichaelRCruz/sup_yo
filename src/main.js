@@ -17,13 +17,6 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-
-function login() {
-  console.log('???????', store.state.loggedIn);
-  store.state.loggedIn = true;
-  console.log('???????', store.state.loggedIn);
-}
-
 const router = new VueRouter({
   routes,
   // works in developmemt mode with webpack, but the server will need to be configured to return all cases
