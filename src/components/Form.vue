@@ -105,6 +105,7 @@ export default {
     },
     fetchPosts() {
       this.$http.get('posts')
+      // fetch('http://localhost:3000/api/posts', { credentials: "include" })
         .then(response => {
           return response.json();
         })

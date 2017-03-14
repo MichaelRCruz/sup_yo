@@ -48,7 +48,7 @@
             <br>
             {{ comment.content }}
             <br>
-            <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove" v-if="true" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
           </p>
         </div>
     </article>
@@ -64,7 +64,7 @@
           <textarea class="textarea" placeholder="Add a comment..." v-model="comment.content"></textarea>
         </p>
         <p class="control">
-          <button class="button" @click="submitComment()">Post comment</button>
+          <button class="button is-primary" @click="submitComment()">Post comment</button>
         </p>
       </div>
     </article>
@@ -115,6 +115,13 @@
           }, error => {
             console.log('failure', error);
           });
+      },
+      deleteComment(comment) {
+        this.$http.delete('comments', { body: { _id: comment._id } })
+          .then(response => {
+            this.comments.splice(this.comments.indexOf(comment), 1)
+            console.log('the delete response', response);
+          })
       }
     }
   };
@@ -122,9 +129,15 @@
 
 
 <style lang="css" scoped>
+
   #post {
     flex: 1;
     padding: 30px 30px 50px 0;
     flex-grow: 1;
   };
+
+  .remove {
+    color: orange;
+  };
+
 </style>
