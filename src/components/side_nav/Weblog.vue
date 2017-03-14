@@ -1,17 +1,11 @@
 <template lang="html">
   <div id="weblog">
 
-    <!-- <ul>
-      <router-link :to="'weblog/' + post._id" tag="li" v-for="post in posts">
-        {{ post.title }}
-      </router-link>
-    </ul> -->
     <a class="button" @click="activate()">Create Post</a>
-    
+
     <article class="media" v-for="post in posts">
       <figure class="media-left">
-        <p class="image is-64x64">
-          <!-- <img src="http://bulma.io/images/placeholders/128x128.png"> -->
+        <p class="image is-32x32">
           <img :src="post.created_by.github_avatar_url">
         </p>
       </figure>
@@ -20,9 +14,8 @@
           <p>
             <strong>{{ post.created_by.name }}</strong> <small>{{ post.created_by.github_user_name }}</small> <small>31m</small>
             <br>
-            <router-link class="title is-3" :to="'weblog/' + post._id" tag="p">
+            <router-link class="title is-4" :to="'weblog/' + post._id" tag="p">
               {{ post.title }}
-            <!-- <p class="title is-3">{{ post.title }}</p> -->
             </router-link>
           </p>
         </div>
@@ -31,9 +24,9 @@
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-reply"></i></span>
             </a>
-            <a class="level-item">
+            <!-- <a class="level-item">
               <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-            </a>
+            </a> -->
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
             </a>
@@ -112,7 +105,6 @@
       <button class="modal-close" @click="disable()"></button>
     </div>
 
-
   </div>
 </template>
 
@@ -167,7 +159,7 @@
 
   #weblog {
     flex: 1;
-    padding: 30px 30px 0 0;
+    padding: 30px 30px 50px 0;
     flex-grow: 1;
   };
 

@@ -62,7 +62,7 @@
       </figure>
       <div class="media-content">
         <p class="control">
-          <textarea class="textarea" placeholder="Add a comment..." v-model="comment.content"></textarea>
+          <textarea class="textarea" placeholder="Add a comment..." v-model="comment.content" v-on:keyup.enter="submitComment()"></textarea>
         </p>
         <p class="control">
           <button class="button is-info" @click="submitComment()">Post comment</button>
