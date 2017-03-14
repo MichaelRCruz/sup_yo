@@ -26,7 +26,8 @@
                 Documentation
               </a>
               <span class="nav-item">
-                <a class="button is-primary is-inverted" @click="makeActive()">
+                <!-- <a class="button is-primary is-inverted" @click="makeActive()"> -->
+                <a class="button is-primary is-inverted" href="http://localhost:3000/auth/github">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
