@@ -5,14 +5,26 @@
       <ul>
         <li class="is-active">
           <a>
+            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span>Favorites</span>
+          </a>
+        </li>
+        <li>
+          <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
           </a>
         </li>
         <li>
           <a>
+            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span>Networking</span>
+          </a>
+        </li>
+        <li>
+          <a>
             <span class="icon is-small"><i class="fa fa-file-word-o"></i></span>
-            <span>Resumes & Cover Letters </span>
+            <span>Resumes / Cover Letters </span>
           </a>
         </li>
         <li>
@@ -24,7 +36,7 @@
         <li>
           <a>
             <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
-            <span>Programming</span>
+            <span>Development</span>
           </a>
         </li>
         <li>
@@ -88,15 +100,31 @@
             <input type="checkbox">
             Remember me
           </label>
+          <label class="checkbox">
+            <input type="checkbox">
+            Remember me
+          </label>
         </p>
         <p class="control">
           <label class="radio">
             <input type="radio" name="question">
-            Yes
+            General
           </label>
           <label class="radio">
             <input type="radio" name="question">
-            No
+            Networking
+          </label>
+          <label class="radio">
+            <input type="radio" name="question">
+            Resumes / Cover Letters
+          </label>
+          <label class="radio">
+            <input type="radio" name="question">
+            Job Search
+          </label>
+          <label class="radio">
+            <input type="radio" name="question">
+            Development
           </label>
         </p>
         <div class="control is-grouped">
