@@ -9,9 +9,9 @@
             <span>Favorites</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/general" exact>
+        <router-link tag="li" to="/home/weblog/topic/general" active-class="is-active" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-weixin" active-class="is-active"></i></span>
+            <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
           </a>
         </router-link>
@@ -147,7 +147,9 @@
   export default {
     data() {
       return {
-        route: this.$route.params.id,
+        routeParameter: {
+          topic: this.$route.params.id
+        },
         picked: "",
         posts: [],
         activated: false,
@@ -159,12 +161,15 @@
       };
     },
     beforeMount() {
-      this.$http.get('posts', )
+      // console.log('3243242342342', this.$route.params.id)
+      console.log('LOLOLOLOLOLOL', this.routeParameter.topic == this.$route.params.id)
+      this.$http.get('posts', { body: { topic: this.routeParameter.topic } })
         .then(response => {
           return response.json();
         })
         .then(data => {
           this.posts = data;
+          console.log('BBBBBBBBBBBB', data)
         });
     },
     methods: {
