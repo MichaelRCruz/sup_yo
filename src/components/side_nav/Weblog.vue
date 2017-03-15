@@ -163,7 +163,7 @@
     beforeMount() {
       // console.log('3243242342342', this.$route.params.id)
       console.log('LOLOLOLOLOLOL', this.routeParameter.topic == this.$route.params.id)
-      this.$http.get('posts', { body: { topic: this.routeParameter.topic } })
+      this.$http.get('posts' + this.$route.params.id)
         .then(response => {
           return response.json();
         })
