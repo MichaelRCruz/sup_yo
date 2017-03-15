@@ -147,7 +147,7 @@
   export default {
     data() {
       return {
-        route: this.$route.params.id
+        route: this.$route.params.id,
         picked: "",
         posts: [],
         activated: false,
