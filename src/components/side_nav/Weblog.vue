@@ -107,23 +107,23 @@
         </p>
         <p class="control">
           <label class="radio">
-            <input type="radio" name="question">
+            <input type="radio" name="question" value="general" v-model="post.topic">
             General
           </label>
           <label class="radio">
-            <input type="radio" name="question">
+            <input type="radio" name="question" value="networking" v-model="post.topic">
             Networking
           </label>
           <label class="radio">
-            <input type="radio" name="question">
+            <input type="radio" name="question" value="resumesCoverLetters" v-model="post.topic">
             Resumes / Cover Letters
           </label>
           <label class="radio">
-            <input type="radio" name="question">
+            <input type="radio" name="question" value="jobSearch" v-model="post.topic">
             Job Search
           </label>
           <label class="radio">
-            <input type="radio" name="question">
+            <input type="radio" name="question" value="development" v-model="post.topic">
             Development
           </label>
         </p>
@@ -147,11 +147,13 @@
   export default {
     data() {
       return {
+        picked: "",
         posts: [],
         activated: false,
         post: {
           title: "",
-          content: ""
+          content: "",
+          topic: ""
         }
       };
     },
