@@ -79,22 +79,6 @@
         <p class="control">
           <input class="input" type="text" placeholder="...create a title" v-model="post.title">
         </p>
-        <!-- <label class="label">Username</label>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-          <span class="icon is-small">
-            <i class="fa fa-check"></i>
-          </span>
-          <span class="help is-success">This username is available</span>
-        </p>
-        <label class="label">Email</label>
-        <p class="control has-icon has-icon-right">
-          <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-          <span class="icon is-small">
-            <i class="fa fa-warning"></i>
-          </span>
-          <span class="help is-danger">This email is invalid</span>
-        </p> -->
         <label class="label">Content</label>
         <p class="control">
           <textarea class="textarea" placeholder="...post content" v-model="post.content"></textarea>
