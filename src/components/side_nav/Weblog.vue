@@ -158,7 +158,6 @@
       };
     },
     beforeMount() {
-      console.log(this.$route.params.id)
       this.$http.get('posts')
         .then(response => {
           return response.json();
