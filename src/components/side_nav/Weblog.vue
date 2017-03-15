@@ -1,7 +1,38 @@
 <template lang="html">
   <div id="weblog">
 
-    <a class="button" @click="activate()">Create Post</a>
+    <div class="tabs is-boxed is-right">
+      <ul>
+        <li class="is-active">
+          <a>
+            <span class="icon is-small"><i class="fa fa-weixin"></i></span>
+            <span>General</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span class="icon is-small"><i class="fa fa-file-word-o"></i></span>
+            <span>Resumes & Cover Letters </span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span>Job Search</span>
+          </a>
+        </li>
+        <li>
+          <a>
+            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span>Programming</span>
+          </a>
+        </li>
+        <li>
+          <a class="button is-info" @click="activate()">Create Post</a>
+        </li>
+      </ul>
+    </div>
+    <!-- <a class="button" @click="activate()">Create Post</a> -->
 
     <article class="media" v-for="post in posts">
       <figure class="media-left">
