@@ -147,6 +147,7 @@
   export default {
     data() {
       return {
+        route: this.$route.params.id
         picked: "",
         posts: [],
         activated: false,
@@ -158,7 +159,7 @@
       };
     },
     beforeMount() {
-      this.$http.get('posts')
+      this.$http.get('posts', )
         .then(response => {
           return response.json();
         })
