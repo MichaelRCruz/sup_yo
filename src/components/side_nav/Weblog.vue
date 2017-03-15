@@ -3,42 +3,42 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
-        <li class="is-active">
+        <router-link tag="li" to="/home/weblog/topic/favorites" active-class="is-active" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Favorites</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/topic/general" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-weixin"></i></span>
+            <span class="icon is-small"><i class="fa fa-weixin" active-class="is-active"></i></span>
             <span>General</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/topic/networking" exact>
           <a>
-            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Networking</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/topic/resumes-cover-letters" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-file-word-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-file-word-o" active-class="is-active"></i></span>
             <span>Resumes / Cover Letters </span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/topic/job-search" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Job Search</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/topic/development" exact>
           <a>
-            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Development</span>
           </a>
-        </li>
+        </router-link>
         <li>
           <a class="button is-outlined is-info" @click="activate()">Create Post</a>
         </li>
@@ -115,11 +115,11 @@
             Networking
           </label>
           <label class="radio">
-            <input type="radio" name="question" value="resumesCoverLetters" v-model="post.topic">
+            <input type="radio" name="question" value="resumes-cover-letters" v-model="post.topic">
             Resumes / Cover Letters
           </label>
           <label class="radio">
-            <input type="radio" name="question" value="jobSearch" v-model="post.topic">
+            <input type="radio" name="question" value="job-search" v-model="post.topic">
             Job Search
           </label>
           <label class="radio">
@@ -158,6 +158,7 @@
       };
     },
     beforeMount() {
+      console.log(this.$route.params.id)
       this.$http.get('posts')
         .then(response => {
           return response.json();

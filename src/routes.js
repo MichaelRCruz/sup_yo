@@ -50,6 +50,7 @@ export const routes = [
           },
           { path: 'dashboard', component: Dashboard },
           { path: 'weblog', component: Weblog },
+          { path: 'weblog/topic/:id', component: Weblog },
           { path: 'weblog/:id', component: Post },
           { path: 'team-settings', component: TeamSettings },
           { path: 'manage-team', component: ManageTeam },
