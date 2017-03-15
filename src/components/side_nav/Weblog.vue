@@ -28,7 +28,7 @@
           </a>
         </li>
         <li>
-          <a class="button is-info" @click="activate()">Create Post</a>
+          <a class="button is-outlined is-info" @click="activate()">Create Post</a>
         </li>
       </ul>
     </div>
@@ -75,9 +75,9 @@
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
 
-        <label class="label">Name</label>
+        <label class="label">Post Title</label>
         <p class="control">
-          <input class="input" type="text" placeholder="Text input" v-model="post.title">
+          <input class="input" type="text" placeholder="...create a title" v-model="post.title">
         </p>
         <!-- <label class="label">Username</label>
         <p class="control has-icon has-icon-right">
@@ -95,18 +95,9 @@
           </span>
           <span class="help is-danger">This email is invalid</span>
         </p> -->
-        <label class="label">Subject</label>
+        <label class="label">Content</label>
         <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </span>
-        </p>
-        <label class="label">Message</label>
-        <p class="control">
-          <textarea class="textarea" placeholder="Textarea" v-model="post.content"></textarea>
+          <textarea class="textarea" placeholder="...post content" v-model="post.content"></textarea>
         </p>
         <p class="control">
           <label class="checkbox">
