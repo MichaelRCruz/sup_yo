@@ -12,7 +12,7 @@
 <script>
     import Header from './components/Header.vue'
     import Footer from './components/Footer.vue'
-    import Form from './components/Form.vue'
+    import Dashboard from './components/Dashboard.vue'
     import Menu from './components/Menu.vue'
     import Welcome from './components/Welcome.vue'
 
@@ -21,7 +21,7 @@
         components: {
           'app-header': Header,
           'app-footer': Footer,
-          'app-form': Form,
+          'app-dashboard': Dashboard,
           'app-menu': Menu,
           'app-welcome': Welcome
         }

@@ -8,8 +8,8 @@
             <img src="" alt="sup_yo logo">
           </a>
           <router-link to="/home" class="nav-item is-tab is-hidden-mobile" active-class="is-active" exact>Home</router-link>
-          <router-link to="/form" class="nav-item is-tab is-hidden-mobile" active-class="is-active" exact>Form</router-link>
-          <router-link to="/form" class="nav-item is-tab is-hidden-mobile"></router-link>
+          <router-link to="/dashboard" class="nav-item is-tab is-hidden-mobile" active-class="is-active" exact>Dashboard</router-link>
+          <router-link to="/dashboard" class="nav-item is-tab is-hidden-mobile"></router-link>
         </div>
         <span class="nav-toggle">
           <span></span>

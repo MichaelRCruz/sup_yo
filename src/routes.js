@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Welcome from './components/Welcome.vue';
 import Footer from './components/Footer.vue';
-import Form from './components/Form.vue';
+import Dashboard from './components/Dashboard.vue';
 import Header from './components/Header.vue';
 import Menu from './components/Menu.vue';
 import Calendar from './components/side_nav/Calendar.vue';
@@ -41,10 +41,10 @@ export const routes = [
       { path: '/',
         component: Menu,
         children: [
-          { path: '/form',
+          { path: '/dashboard',
             name: 'header',
             components: {
-            default: Form,
+            default: Dashboard,
             'header': Header
             }
           },
