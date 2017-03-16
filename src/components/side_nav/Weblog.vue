@@ -56,7 +56,7 @@
         <div class="content">
           <p>
             <strong>{{ post.created_by.name }}</strong>
-            <a :href="post.created_by.github_profile_url" >
+            <a target="_blank" :href="post.created_by.github_profile_url" >
               <small>
                 {{ post.created_by.github_user_name }}
               </small>
