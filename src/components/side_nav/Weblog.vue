@@ -188,7 +188,6 @@
             if (data.topic == this.topicId) {
               this.posts.push(data)
             }
-            this.posts.push(data);
             this.disable();
           }, error => {
             console.log('failure', error);
