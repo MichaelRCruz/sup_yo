@@ -4,7 +4,7 @@ import Footer from './components/Footer.vue';
 import Form from './components/Form.vue';
 import Header from './components/Header.vue';
 import Menu from './components/Menu.vue';
-import Dashboard from './components/side_nav/Dashboard.vue';
+import Calendar from './components/side_nav/Calendar.vue';
 import Weblog from './components/side_nav/Weblog.vue';
 import Post from './components/Post.vue';
 import TeamSettings from './components/side_nav/TeamSettings.vue';
@@ -48,7 +48,7 @@ export const routes = [
             'header': Header
             }
           },
-          { path: 'dashboard', component: Dashboard },
+          { path: 'calendar', component: Calendar },
           { path: 'weblog/:topic', component: Weblog },
           { path: 'weblog/:topic/:id', component: Post },
           { path: 'team-settings', component: TeamSettings },
