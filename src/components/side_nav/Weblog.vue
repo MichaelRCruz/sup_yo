@@ -73,9 +73,6 @@
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-reply"></i></span>
             </a>
-            <!-- <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-            </a> -->
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
             </a>
@@ -166,6 +163,7 @@
     },
     beforeMount() {
       this.fetchPosts();
+      console.log(this.$route);
     },
     watch: {
       '$route'(to, from) {
