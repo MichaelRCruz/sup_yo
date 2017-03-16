@@ -46,7 +46,7 @@
     </div>
     <!-- <a class="button" @click="activate()">Create Post</a> -->
 
-    <article class="media" v-for="post in posts">
+    <article class="media animated slideInUp" v-for="post in posts">
       <figure class="media-left">
         <p class="image is-32x32">
           <img :src="post.created_by.github_avatar_url">
@@ -72,9 +72,6 @@
           <div class="level-left">
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-reply"></i></span>
-            </a>
-            <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-heart"></i></span>
             </a>
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
@@ -263,10 +260,20 @@
     flex: 1;
     padding: 30px 30px 50px 0;
     flex-grow: 1;
-  };
+  }
 
   img {
     border-radius: 5px;
+  }
+
+  .title {
+    color: #3273dc;
+    cursor: pointer;
+  }
+
+  .fa-trash {
+    padding-top: 55px;
+    color: #fe3860;
   }
 
 </style>

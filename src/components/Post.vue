@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="post" class="animated bounceIn">
+  <div id="post" class="">
 
 
     <div class="box">
@@ -39,7 +39,7 @@
       </article>
     </div>
 
-    <article class="media animated bounceIn" v-for="comment in comments">
+    <article class="media animated slideInUp" v-for="comment in comments">
       <figure class="media-left">
         <p class="image is-32x32">
           <img :src="comment.created_by.github_avatar_url">
@@ -68,7 +68,10 @@
       </figure>
       <div class="media-content">
         <p class="control">
-          <textarea class="textarea" placeholder="Add a comment..." v-model="comment.content" v-on:keyup.enter="submitComment()"></textarea>
+          <textarea class="textarea is-success" placeholder="Add a comment..." v-model="comment.content" v-on:keyup.enter="submitComment()"></textarea>
+        </p>
+        <p class="help">
+          This field is required
         </p>
         <p class="control">
           <button class="button is-info" @click="submitComment()">Post comment</button>

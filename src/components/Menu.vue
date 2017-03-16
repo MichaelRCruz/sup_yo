@@ -2,19 +2,32 @@
   <div id="main-wrapper">
     <div id="wrapper">
       <div id="container">
+
         <aside class="menu">
           <p class="menu-label">
             General
           </p>
           <ul class="menu-list">
-            <li><router-link tag="a" to="/dashboard/calendar" active-class="is-active" exact>Calendar</router-link></li>
-            <li><router-link tag="a" to="/dashboard/weblog/general" active-class="is-active" exact>Weblog</router-link></li>
+            <li>
+              <router-link tag="a" to="/dashboard/calendar" active-class="is-active" exact>
+                Calendar
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/dashboard/weblog/general" active-class="is-active" exact>
+                Weblog
+              </router-link>
+            </li>
           </ul>
           <p class="menu-label">
             Administration
           </p>
           <ul class="menu-list">
-            <li><router-link tag="a" to="/dashboard/team-settings" active-class="is-active" exact>Team Settings</router-link></li>
+            <li>
+              <router-link tag="a" to="/dashboard/team-settings" active-class="is-active" exact>
+                Team Settings
+              </router-link>
+            </li>
             <li>
               <a>Manage Your Team</a>
               <ul>
@@ -23,25 +36,48 @@
                 <li><a>Add a member</a></li>
               </ul>
             </li>
-            <li><router-link tag="a" to="/dashboard/invitations" active-class="is-active" exact>Invitations</router-link></li>
-            <li><router-link tag="a" to="/dashboard/cloud-storage" active-class="is-active" exact>Cloud Storage Env Settings</router-link></li>
-            <li><router-link tag="a" to="/dashboard/authentication" active-class="is-active" exact>Authentication</router-link></li>
+            <li>
+              <router-link tag="a" to="/dashboard/invitations" active-class="is-active" exact>
+                Invitations
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/dashboard/cloud-storage" active-class="is-active" exact>
+                Cloud Storage Env Settings
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/dashboard/authentication" active-class="is-active" exact>
+                Authentication
+              </router-link></li>
           </ul>
           <p class="menu-label">
             Transactions
           </p>
           <ul class="menu-list">
-            <li><router-link tag="a" to="/dashboard/payments" active-class="is-active" exact>Payments</router-link></li>
-            <li><router-link tag="a" to="/dashboard/transfers" active-class="is-active" exact>Transfers</router-link></li>
-            <li><router-link tag="a" to="/dashboard/balance" active-class="is-active" exact>Balance</router-link></li>
+            <li>
+              <router-link tag="a" to="/dashboard/payments" active-class="is-active" exact>
+                Payments
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/dashboard/transfers" active-class="is-active" exact>
+                Transfers
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/dashboard/balance" active-class="is-active" exact>
+                Balance
+              </router-link>
+            </li>
           </ul>
         </aside>
+
       </div>
     </div>
 
-    <div class="content-wrapper">
-      <router-view></router-view>
-    </div>
+    <div class="content-wrapper"><router-view></router-view></div>
+
   </div>
 </template>
 
@@ -77,6 +113,10 @@
 
   #main-wrapper {
     display: flex;
+  };
+
+  .menu-label {
+    color: #00d1b2;
   };
 
 
