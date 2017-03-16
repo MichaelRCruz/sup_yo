@@ -82,11 +82,6 @@
           </div>
         </nav>
       </div>
-      <div v-if="$store.state.session._id == post.created_by._id" class="media-right">
-        <!-- <a class="level-item">
-          <span class="icon is-small"><i class="fa fa-trash" @click="activateDeleteModal(post)"></i></span>
-        </a> -->
-      </div>
     </article>
 
 

@@ -2,7 +2,7 @@
   <div id="teamSettings">
 
 
-    <h1>here is where the calendar should go</h1>
+    
 
 
   </div>

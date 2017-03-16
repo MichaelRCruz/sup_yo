@@ -67,6 +67,13 @@
                  3 hrs
             </small>
           </p>
+
+
+
+          
+
+
+
         </div>
     </article>
 
