@@ -57,7 +57,7 @@
     <article class="media">
       <figure class="media-left">
         <p class="image is-32x32">
-          <img :src="userPost.created_by.github_avatar_url">
+          <img :src="$store.state.session.github_avatar_url">
         </p>
       </figure>
       <div class="media-content">
