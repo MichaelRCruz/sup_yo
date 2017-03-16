@@ -57,7 +57,7 @@
             <br>
             <small>
               <a>Like</a>
-              · <a class="reply">
+              · <a class="reply" @click="requestReply()">
                  Reply
                 </a>
                 · <a class="remove is-warning"
@@ -70,7 +70,28 @@
 
 
 
-          
+          <article class="media" v-if="replyRequest">
+            <figure class="media-left">
+              <p class="image is-32x32">
+                <img src="http://bulma.io/images/placeholders/128x128.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button">Post comment</button>
+                </p>
+              </div>
+
+
+
+            </div>
+          </article>
 
 
 
@@ -114,6 +135,7 @@
   export default {
     data() {
       return {
+        replyRequest: false,
         commentField: {
           isInfo: true,
           isDanger: false,
@@ -180,6 +202,9 @@
           .then(response => {
             this.comments.splice(this.comments.indexOf(comment), 1)
           })
+      },
+      requestReply() {
+        this.replyRequest = true
       }
     }
   };

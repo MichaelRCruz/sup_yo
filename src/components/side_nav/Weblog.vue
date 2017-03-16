@@ -215,7 +215,6 @@
             return response.json();
           })
           .then(data => {
-            console.log('lsdcnlksndlkcnqslkdcnklqnwsdckqlkwdncklqnwcl k', data);
             if (data.topic == this.topicId) {
               // this.posts.push(data);
               this.posts.unshift(data);
