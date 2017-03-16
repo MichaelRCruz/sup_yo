@@ -76,7 +76,7 @@
           </div>
         </nav>
       </div>
-      <div class="media-right">
+      <div v-if="$store.state.session._id == post.created_by._id" class="media-right">
         <button class="delete" @click="deletePost(post)"></button>
       </div>
     </article>
