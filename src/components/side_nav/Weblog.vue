@@ -84,7 +84,7 @@
       </div>
       <div v-if="$store.state.session._id == post.created_by._id" class="media-right">
         <a class="level-item">
-          <span class="icon is-small"><i class="fa fa-trash" @click="deletePost(post)"></i></span>
+          <span class="icon is-small"><i class="fa fa-trash" @click="activateDeleteModal(post)"></i></span>
         </a>
       </div>
     </article>
@@ -147,6 +147,32 @@
       <button class="modal-close" @click="disable()"></button>
     </div>
 
+    <div class="modal" :class="{ 'is-active': activateDelete }">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+
+        <article class="message is-warning">
+          <div class="message-header">
+            Info
+            <button class="delete" @click="disableDeleteModal(post)"></button>
+          </div>
+          <div class="message-body">
+            This will mess stuff up beacuse we are in development, but by all means
+            please try and delete some data.
+            <!-- <div class="block"> -->
+              <span class="tag is-danger">
+                delete
+                <button class="delete is-small" @click="deletePost()"></button>
+              </span>
+            <!-- </div> -->
+          </div>
+        </article>
+
+      </div>
+      <button class="modal-close" @click="disableDeleteModal(post)"></button>
+    </div>
+
   </div>
 </template>
 
@@ -155,10 +181,12 @@
   export default {
     data() {
       return {
+        persistedPost: {},
         topicId: this.$route.params.topic,
         picked: "",
         posts: [],
         activated: false,
+        activateDelete: false,
         post: {
           title: "",
           content: "",
@@ -204,7 +232,9 @@
           });
       },
       deletePost(post) {
-        this.$http.delete('posts', { body: { _id: post._id } })
+        this.disableDeleteModal(post)
+        this.isActive = true;
+        this.$http.delete('posts', { body: { _id: this.persistedPost._id } })
           .then(response => {
             this.posts.splice(this.posts.indexOf(post), 1)
           })
@@ -212,8 +242,15 @@
       activate() {
         this.activated = true
       },
+      activateDeleteModal(post) {
+        this.persistedPost = post;
+        this.activateDelete = true
+      },
       disable() {
         this.activated = false
+      },
+      disableDeleteModal(post) {
+        this.activateDelete = false
       }
     }
   }
@@ -230,10 +267,6 @@
 
   img {
     border-radius: 5px;
-  }
-
-  .fa-trash {
-    color: red;
   }
 
 </style>
