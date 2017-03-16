@@ -3,13 +3,13 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
-        <li class="is-active">
+        <li>
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
             <span>Favorites</span>
           </a>
         </li>
-        <li>
+        <li class="is-active">
           <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
