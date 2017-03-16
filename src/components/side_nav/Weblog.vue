@@ -3,22 +3,13 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
-<<<<<<< HEAD
-        <li>
-=======
         <router-link tag="li" to="/home/weblog/favorites" active-class="is-active" exact>
->>>>>>> refactor_routes
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Favorites</span>
           </a>
-<<<<<<< HEAD
-        </li>
-        <li class="is-active">
-=======
         </router-link>
         <router-link tag="li" to="/home/weblog/general" active-class="is-active" exact>
->>>>>>> refactor_routes
           <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
