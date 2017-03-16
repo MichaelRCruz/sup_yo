@@ -3,37 +3,37 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
-        <router-link tag="li" to="/home/weblog/topic/favorites" active-class="is-active" exact>
+        <router-link tag="li" to="/home/weblog/favorites" active-class="is-active" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Favorites</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/general" active-class="is-active" exact>
+        <router-link tag="li" to="/home/weblog/general" active-class="is-active" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/networking" exact>
+        <router-link tag="li" to="/home/weblog/networking" exact>
           <a>
             <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Networking</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/resumes-cover-letters" exact>
+        <router-link tag="li" to="/home/weblog/resumes-cover-letters" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-file-word-o" active-class="is-active"></i></span>
             <span>Resumes / Cover Letters </span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/job-search" exact>
+        <router-link tag="li" to="/home/weblog/job-search" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Job Search</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/topic/development" exact>
+        <router-link tag="li" to="/home/weblog/development" exact>
           <a>
             <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Development</span>
@@ -57,7 +57,7 @@
           <p>
             <strong>{{ post.created_by.name }}</strong> <small>{{ post.created_by.github_user_name }}</small> <small>31m</small>
             <br>
-            <router-link class="title is-4" :to="'weblog/' + post._id" tag="p">
+            <router-link class="title is-4" :to="post.topic + '/' + post._id" tag="p">
               {{ post.title }}
             </router-link>
           </p>
@@ -147,9 +147,7 @@
   export default {
     data() {
       return {
-        routeParameter: {
-          topic: this.$route.params.id
-        },
+        topicId: this.$route.params.topic,
         picked: "",
         posts: [],
         activated: false,
@@ -161,18 +159,25 @@
       };
     },
     beforeMount() {
-      // console.log('3243242342342', this.$route.params.id)
-      console.log('LOLOLOLOLOLOL', this.routeParameter.topic == this.$route.params.id)
-      this.$http.get('posts' + this.$route.params.id)
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          this.posts = data;
-          console.log('BBBBBBBBBBBB', data)
-        });
+      this.fetchPosts();
+    },
+    watch: {
+      '$route'(to, from) {
+        this.topicId = to.params.topic;
+        this.fetchPosts();
+      }
     },
     methods: {
+      fetchPosts() {
+        this.$http.get('posts/topic/' + this.$route.params.topic)
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            this.posts = data;
+            console.log('BBBBBBBBBBBB', data)
+          });
+      },
       submitPost() {
         this.$http.post('posts', this.post)
           .then(response => {
