@@ -152,9 +152,9 @@
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
 
-        <article class="message is-warning">
+        <article class="message is-warning animated bounceIn">
           <div class="message-header">
-            Info
+            Warning!
             <button class="delete" @click="disableDeleteModal(post)"></button>
           </div>
           <div class="message-body">
@@ -236,7 +236,7 @@
         this.isActive = true;
         this.$http.delete('posts', { body: { _id: this.persistedPost._id } })
           .then(response => {
-            this.posts.splice(this.posts.indexOf(post), 1)
+            this.posts.splice(0, 1)
           })
       },
       activate() {
