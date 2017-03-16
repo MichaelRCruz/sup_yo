@@ -25,13 +25,13 @@
           <nav class="level">
             <div class="level-left">
               <a class="level-item">
-                <span class="icon is-medium"><i class="fa fa-reply"></i></span>
+                <span class="icon is-small"><i class="fa fa-reply"></i></span>
               </a>
               <!-- <a class="level-item">
                 <span class="icon is-small"><i class="fa fa-retweet"></i></span>
               </a> -->
               <a class="level-item">
-                <span class="icon is-medium"><i class="fa fa-heart"></i></span>
+                <span class="icon is-small"><i class="fa fa-heart"></i></span>
               </a>
             </div>
           </nav>
@@ -55,7 +55,17 @@
             <br>
             {{ comment.content }}
             <br>
-            <small><a>Like</a> · <a class="reply">Reply</a> · <a class="remove is-warning" v-if="$store.state.session._id == comment.created_by._id" @click="deleteComment(comment)">delete ·</a> 3 hrs</small>
+            <small>
+              <a>Like</a>
+              · <a class="reply">
+                 Reply
+                </a>
+                · <a class="remove is-warning"
+                    v-if="$store.state.session._id == comment.created_by._id"
+                    @click="deleteComment(comment)">delete
+                 ·</a>
+                 3 hrs
+            </small>
           </p>
         </div>
     </article>
@@ -69,8 +79,8 @@
       <div class="media-content">
         <p class="control">
           <textarea class="textarea is-info"
-                    :class="{ 'is-info': commentField.isInfo,
-                              'is-danger': commentField.isDanger,
+                    :class="{    'is-info': commentField.isInfo,
+                               'is-danger': commentField.isDanger,
                               'is-success': commentField.isSuccess
                             }"
                     placeholder="Add a comment..."
@@ -183,6 +193,10 @@
 
   img {
     border-radius: 5px;
+  }
+
+  .help {
+    padding-bottom: 10px;
   }
 
 </style>
