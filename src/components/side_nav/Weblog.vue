@@ -55,7 +55,13 @@
       <div class="media-content">
         <div class="content">
           <p>
-            <strong>{{ post.created_by.name }}</strong> <small>{{ post.created_by.github_user_name }}</small> <small>31m</small>
+            <strong>{{ post.created_by.name }}</strong>
+            <a :href="post.created_by.github_profile_url" >
+              <small>
+                {{ post.created_by.github_user_name }}
+              </small>
+            </a>
+            <small>31m</small>
             <br>
             <router-link class="title is-4" :to="post.topic + '/' + post._id" tag="p">
               {{ post.title }}

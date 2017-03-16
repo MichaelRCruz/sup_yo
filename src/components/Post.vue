@@ -13,7 +13,11 @@
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{ userPost.created_by.name }}</strong> <small>{{ userPost.created_by.github_user_name }}</small> <small>31m</small>
+              <strong>{{ userPost.created_by.name }}</strong>
+              <a target="_blank" :href="userPost.created_by.github_profile_url">
+                <small>{{ userPost.created_by.github_user_name }}</small>
+              </a>
+              <small>31m</small>
               <h1>{{ userPost.title }}</h1>
               {{ userPost.content }}
             </p>
@@ -45,7 +49,9 @@
         <div class="content">
           <p>
             <strong>{{ comment.created_by.name }}</strong>
-            <small>{{ comment.created_by.github_user_name }}</small>
+            <a target="_blank" :href="userPost.created_by.github_profile_url">
+              <small>{{ comment.created_by.github_user_name }}</small>
+            </a>
             <br>
             {{ comment.content }}
             <br>
