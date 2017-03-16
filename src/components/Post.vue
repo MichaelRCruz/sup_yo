@@ -57,7 +57,7 @@
             <br>
             <small>
               <a>Like</a>
-              · <a class="reply" @click="requestReply()">
+              · <a class="reply" @click="requestReply(comment)">
                  Reply
                 </a>
                 · <a class="remove is-warning"
@@ -70,10 +70,11 @@
 
 
 
-          <article class="media" v-if="replyRequest">
+          <article class="media"
+                   v-if="replyRequest.request && comments.indexOf(comment) == replyRequest.index">
             <figure class="media-left">
               <p class="image is-32x32">
-                <img src="http://bulma.io/images/placeholders/128x128.png">
+                <img :src="$store.state.session.github_avatar_url">
               </p>
             </figure>
             <div class="media-content">
@@ -135,7 +136,10 @@
   export default {
     data() {
       return {
-        replyRequest: false,
+        replyRequest: {
+          request: false,
+          index: ""
+        },
         commentField: {
           isInfo: true,
           isDanger: false,
@@ -200,11 +204,13 @@
       deleteComment(comment) {
         this.$http.delete('comments', { body: { _id: comment._id } })
           .then(response => {
-            this.comments.splice(this.comments.indexOf(comment), 1)
+            console.log(this.comments.indexOf(comment));
+            this.comments.splice(this.comments.indexOf(comment), 1);
           })
       },
-      requestReply() {
-        this.replyRequest = true
+      requestReply(comment) {
+        this.replyRequest.request = true;
+        this.replyRequest.index = this.comments.indexOf(comment);
       }
     }
   };
