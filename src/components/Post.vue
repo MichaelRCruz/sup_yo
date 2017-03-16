@@ -6,8 +6,8 @@
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
-            <!-- <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"> -->
-            <img :src="userPost.created_by.github_avatar_url" alt="http://bulma.io/images/placeholders/128x128.png">
+            <img :src="userPost.created_by.github_avatar_url"
+                  alt="http://bulma.io/images/placeholders/128x128.png">
           </figure>
         </div>
         <div class="media-content">
@@ -71,7 +71,8 @@
 
 
           <article class="media"
-                   v-if="replyRequest.request && comments.indexOf(comment) == replyRequest.index">
+                   v-if="replyRequest.request &&
+                         comments.indexOf(comment) == replyRequest.index">
             <figure class="media-left">
               <p class="image is-32x32">
                 <img :src="$store.state.session.github_avatar_url">
@@ -80,7 +81,8 @@
             <div class="media-content">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea" placeholder="Add a comment..."></textarea>
+                  <textarea class="textarea"
+                            placeholder="Add a comment..."></textarea>
                 </p>
               </div>
               <div class="field">
@@ -121,7 +123,8 @@
           {{ commentField.message }}
         </p>
         <p class="control">
-          <button class="button is-info" @click="submitComment()">Post comment</button>
+          <button class="button is-info"
+                  @click="submitComment()">Post comment</button>
         </p>
       </div>
     </article>
@@ -223,11 +226,11 @@
     flex: 1;
     padding: 30px 30px 50px 0;
     flex-grow: 1;
-  };
+  }
 
   .remove {
     color: orange;
-  };
+  }
 
   img {
     border-radius: 5px;
