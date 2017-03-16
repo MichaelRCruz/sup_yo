@@ -7,7 +7,6 @@
           <a class="nav-item">
             <img src="" alt="sup_yo logo">
           </a>
-          <!-- <router-link to="/home" class="nav-item is-tab is-hidden-mobile" active-class="is-active" exact>Home</router-link> -->
           <router-link to="/dashboard" class="nav-item is-tab is-hidden-mobile is-active" exact>Dashboard</router-link>
           <router-link to="/dashboard" class="nav-item is-tab is-hidden-mobile"></router-link>
         </div>
@@ -17,7 +16,7 @@
           <span></span>
         </span>
         <div class="nav-right nav-menu">
-          <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
+          <a class="nav-item is-tab is-hidden-tablet is-active">Dashboard</a>
           <a class="nav-item is-tab is-hidden-tablet">Features</a>
           <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
           <a class="nav-item is-tab is-hidden-tablet">About</a>

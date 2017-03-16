@@ -19,7 +19,7 @@ import { store } from './store/store';
 
 
 export const routes = [
-  { path: '/home',
+  { path: '/dashboard',
     component: Header,
 
     beforeEnter: (to, from, next) => {

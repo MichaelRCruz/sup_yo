@@ -3,37 +3,37 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
-        <router-link tag="li" to="/home/weblog/favorites" active-class="is-active" exact>
+        <router-link tag="li" to="/dashboard/weblog/favorites" active-class="is-active" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Favorites</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/general" active-class="is-active" exact>
+        <router-link tag="li" to="/dashboard/weblog/general" active-class="is-active" exact>
           <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/networking" active-class="is-active"exact>
+        <router-link tag="li" to="/dashboard/weblog/networking" active-class="is-active"exact>
           <a>
             <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
             <span>Networking</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/resumes-cover-letters" active-class="is-active"exact>
+        <router-link tag="li" to="/dashboard/weblog/resumes-cover-letters" active-class="is-active"exact>
           <a>
             <span class="icon is-small"><i class="fa fa-file-word-o"></i></span>
             <span>Resumes / Cover Letters </span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/job-search" active-class="is-active"exact>
+        <router-link tag="li" to="/dashboard/weblog/job-search" active-class="is-active"exact>
           <a>
             <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
             <span>Job Search</span>
           </a>
         </router-link>
-        <router-link tag="li" to="/home/weblog/development" active-class="is-active"exact>
+        <router-link tag="li" to="/dashboard/weblog/development" active-class="is-active"exact>
           <a>
             <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
             <span>Development</span>
