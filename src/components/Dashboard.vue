@@ -7,7 +7,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control">
-            <textarea class="input is-success" type="text" placeholder="e.g. Partnership opportunity">
+            <input class="input is-success" type="text" placeholder="e.g. Partnership opportunity">
           </div>
           <p class="help">
             This field is required

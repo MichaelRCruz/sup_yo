@@ -68,10 +68,18 @@
       </figure>
       <div class="media-content">
         <p class="control">
-          <textarea class="textarea is-success" placeholder="Add a comment..." v-model="comment.content" v-on:keyup.enter="submitComment()"></textarea>
+          <textarea class="textarea is-info"
+                    :class="{ 'is-info': commentField.isInfo,
+                              'is-danger': commentField.isDanger,
+                              'is-success': commentField.isSuccess
+                            }"
+                    placeholder="Add a comment..."
+                    v-model="comment.content"
+                    v-on:keyup.enter="submitComment()">
+          </textarea>
         </p>
         <p class="help">
-          This field is required
+          {{ commentField.message }}
         </p>
         <p class="control">
           <button class="button is-info" @click="submitComment()">Post comment</button>
@@ -89,6 +97,11 @@
   export default {
     data() {
       return {
+        commentField: {
+          isInfo: true,
+          isDanger: false,
+          message: ""
+        },
         activated: false,
         userPost: {
           _id: this.$route.params.id,
@@ -122,17 +135,28 @@
     },
     methods: {
       submitComment() {
-        this.$http.post('comments', this.comment)
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            this.comments.push(data);
-            this.activated = true;
-            this.comment.content = "";
-          }, error => {
-            console.log('failure', error);
-          });
+        if (this.comment.content == "") {
+          console.log("need to add a field")
+          this.commentField.isInfo = false;
+          this.commentField.isDanger = true;
+          this.commentField.message = "please add a comment";
+        } else {
+            this.$http.post('comments', this.comment)
+              .then(response => {
+                return response.json();
+              })
+              .then(data => {
+                this.comments.push(data);
+                this.activated = true;
+                this.comment.content = "";
+              }, error => {
+                console.log('failure', error);
+              });
+            this.commentField.isInfo = false;
+            this.commentField.isDanger = false;
+            this.commentField.isSuccess = true;
+            this.commentField.message = "thanks :)";
+        }
       },
       deleteComment(comment) {
         this.$http.delete('comments', { body: { _id: comment._id } })
