@@ -61,8 +61,8 @@
                  Reply
                 </a>
                 · <a class="remove is-warning"
-                    v-if="$store.state.session._id == comment.created_by._id"
-                    @click="deleteComment(comment)">delete
+                      v-if="$store.state.session._id == comment.created_by._id"
+                      @click="deleteComment(comment)">delete
                  ·</a>
                  3 hrs
             </small>
