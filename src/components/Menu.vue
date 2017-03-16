@@ -8,7 +8,7 @@
           </p>
           <ul class="menu-list">
             <li><router-link tag="a" to="/home/dashboard" active-class="is-active" exact>Dashboard</router-link></li>
-            <li><router-link tag="a" to="/home/weblog" active-class="is-active" exact>Weblog</router-link></li>
+            <li><router-link tag="a" to="/home/weblog/general" active-class="is-active" exact>Weblog</router-link></li>
           </ul>
           <p class="menu-label">
             Administration

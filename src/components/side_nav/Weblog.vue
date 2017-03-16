@@ -3,42 +3,51 @@
 
     <div class="tabs is-boxed is-right">
       <ul>
+<<<<<<< HEAD
         <li>
+=======
+        <router-link tag="li" to="/home/weblog/favorites" active-class="is-active" exact>
+>>>>>>> refactor_routes
           <a>
-            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Favorites</span>
           </a>
+<<<<<<< HEAD
         </li>
         <li class="is-active">
+=======
+        </router-link>
+        <router-link tag="li" to="/home/weblog/general" active-class="is-active" exact>
+>>>>>>> refactor_routes
           <a>
             <span class="icon is-small"><i class="fa fa-weixin"></i></span>
             <span>General</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/networking" exact>
           <a>
-            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Networking</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/resumes-cover-letters" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-file-word-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-file-word-o" active-class="is-active"></i></span>
             <span>Resumes / Cover Letters </span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/job-search" exact>
           <a>
-            <span class="icon is-small"><i class="fa fa-handshake-o"></i></span>
+            <span class="icon is-small"><i class="fa fa-handshake-o" active-class="is-active"></i></span>
             <span>Job Search</span>
           </a>
-        </li>
-        <li>
+        </router-link>
+        <router-link tag="li" to="/home/weblog/development" exact>
           <a>
-            <span class="icon is-small"><i class=" fa fa-file-code-o"></i></span>
+            <span class="icon is-small"><i class=" fa fa-file-code-o" active-class="is-active"></i></span>
             <span>Development</span>
           </a>
-        </li>
+        </router-link>
         <li>
           <a class="button is-outlined is-info" @click="activate()">Create Post</a>
         </li>
@@ -57,7 +66,7 @@
           <p>
             <strong>{{ post.created_by.name }}</strong> <small>{{ post.created_by.github_user_name }}</small> <small>31m</small>
             <br>
-            <router-link class="title is-4" :to="'weblog/' + post._id" tag="p">
+            <router-link class="title is-4" :to="post.topic + '/' + post._id" tag="p">
               {{ post.title }}
             </router-link>
           </p>
@@ -115,11 +124,11 @@
             Networking
           </label>
           <label class="radio">
-            <input type="radio" name="question" value="resumesCoverLetters" v-model="post.topic">
+            <input type="radio" name="question" value="resumes-cover-letters" v-model="post.topic">
             Resumes / Cover Letters
           </label>
           <label class="radio">
-            <input type="radio" name="question" value="jobSearch" v-model="post.topic">
+            <input type="radio" name="question" value="job-search" v-model="post.topic">
             Job Search
           </label>
           <label class="radio">
@@ -147,6 +156,7 @@
   export default {
     data() {
       return {
+        topicId: this.$route.params.topic,
         picked: "",
         posts: [],
         activated: false,
@@ -158,15 +168,25 @@
       };
     },
     beforeMount() {
-      this.$http.get('posts')
-        .then(response => {
-          return response.json();
-        })
-        .then(data => {
-          this.posts = data;
-        });
+      this.fetchPosts();
+    },
+    watch: {
+      '$route'(to, from) {
+        this.topicId = to.params.topic;
+        this.fetchPosts();
+      }
     },
     methods: {
+      fetchPosts() {
+        this.$http.get('posts/topic/' + this.$route.params.topic)
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            this.posts = data;
+            console.log('BBBBBBBBBBBB', data)
+          });
+      },
       submitPost() {
         this.$http.post('posts', this.post)
           .then(response => {
