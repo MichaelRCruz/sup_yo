@@ -148,4 +148,8 @@
     color: orange;
   };
 
+  img {
+    border-radius: 5px;
+  }
+
 </style>

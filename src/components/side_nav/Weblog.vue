@@ -174,19 +174,20 @@
             return response.json();
           })
           .then(data => {
-            this.posts = data;
-            console.log('BBBBBBBBBBBB', data)
+            this.posts = data.reverse();
           });
       },
       submitPost() {
         this.$http.post('posts', this.post)
           .then(response => {
-            return response.json()
+            return response.json();
           })
           .then(data => {
             console.log('lsdcnlksndlkcnqslkdcnklqnwsdckqlkwdncklqnwcl k', data);
             if (data.topic == this.topicId) {
-              this.posts.push(data)
+              // this.posts.push(data);
+              this.posts.unshift(data);
+
             }
             this.disable();
           }, error => {
@@ -197,12 +198,10 @@
         this.$http.delete('posts', { body: { _id: post._id } })
           .then(response => {
             this.posts.splice(this.posts.indexOf(post), 1)
-            console.log('the delete response', response);
           })
       },
       activate() {
         this.activated = true
-        console.log(this.posts[0].created_by.github_avatar_url)
       },
       disable() {
         this.activated = false
@@ -219,5 +218,9 @@
     padding: 30px 30px 50px 0;
     flex-grow: 1;
   };
+
+  img {
+    border-radius: 5px;
+  }
 
 </style>
