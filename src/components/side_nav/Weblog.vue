@@ -76,11 +76,16 @@
             <a class="level-item">
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
             </a>
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-heart"></i></span>
+            </a>
           </div>
         </nav>
       </div>
       <div v-if="$store.state.session._id == post.created_by._id" class="media-right">
-        <button class="delete" @click="deletePost(post)"></button>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fa fa-trash" @click="deletePost(post)"></i></span>
+        </a>
       </div>
     </article>
 
@@ -225,6 +230,10 @@
 
   img {
     border-radius: 5px;
+  }
+
+  .fa-trash {
+    color: red;
   }
 
 </style>
