@@ -72,7 +72,8 @@
 
           <article class="media"
                    v-if="replyRequest.request &&
-                         comments.indexOf(comment) == replyRequest.index">
+                         comments.indexOf(comment) == replyRequest.index &&
+                         commentReplyField.isActivated == true">
             <figure class="media-left">
               <p class="image is-32x32">
                 <img :src="$store.state.session.github_avatar_url">
@@ -166,7 +167,8 @@
         commentReplyField: {
           isInfo: true,
           isDanger: false,
-          message: ""
+          message: "",
+          isActivated: true
         },
         activated: false,
         userPost: {
@@ -255,6 +257,7 @@
               .then(data => {
                 this.commentReplies.push(data);
                 this.activated = true;
+                this.commentReplyField.isActivated = false;
                 this.commentReply.content = "";
                 console.log('has this been populated?', data)
               }, error => {
