@@ -68,32 +68,12 @@
             </small>
           </p>
 
-          <article class="media" v-for="commentReply in commentReplies"
-                                 v-if="commentReply.replied_to._id == comment._id">
-            <figure class="media-left">
-              <p class="image is-24x24">
-                <img :src="comment.created_by.github_avatar_url">
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>{{ comment.created_by.name }}</strong>
-                  <br>
-                    {{ commentReply.content }}
-                  <br>
-                  <small><a>Like</a> · 2 hrs</small>
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article class="media"
+          <article class="media animated slideInDown"
                    v-if="replyRequest.request &&
                          comments.indexOf(comment) == replyRequest.index
                         ">
             <figure class="media-left">
-              <p class="image is-32x32">
+              <p class="image is-24x24">
                 <img :src="$store.state.session.github_avatar_url">
               </p>
             </figure>
@@ -124,6 +104,65 @@
               </div>
             </div>
           </article>
+
+          <article class="media" v-for="commentReply in commentReplies"
+                                 v-if="commentReply.replied_to._id == comment._id">
+            <figure class="media-left">
+              <p class="image is-24x24">
+                <img :src="comment.created_by.github_avatar_url">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ comment.created_by.name }}</strong>
+                  <br>
+                    {{ commentReply.content }}
+                  <br>
+                  <small><a>Like</a> · 2 hrs</small>
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- <article class="media"
+                   v-if="replyRequest.request &&
+                         comments.indexOf(comment) == replyRequest.index
+                        ">
+            <figure class="media-left">
+              <p class="image is-24x24">
+                <img :src="$store.state.session.github_avatar_url">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea is-info"
+                            :class="{    'is-info': commentReplyField.isInfo,
+                                       'is-danger': commentReplyField.isDanger,
+                                      'is-success': commentReplyField.isSuccess
+                                    }"
+                            placeholder="Add a comment..."
+                            v-model="commentReply.content"
+                            v-on:keyup.enter="submitCommentReply(comment)"
+                  ></textarea>
+                </p>
+                <p class="help">
+                  {{ commentReplyField.message }}
+                </p>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button"
+                          @click="submitCommentReply(comment)">
+                          Submit Reply
+                  </button>
+                </p>
+              </div>
+            </div>
+          </article> -->
+
+
         </div>
     </article>
 
