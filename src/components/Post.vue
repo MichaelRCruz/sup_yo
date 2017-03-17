@@ -269,7 +269,6 @@
                 this.activated = true;
                 this.commentReplyField.isActivated = false;
                 this.commentReply.content = "";
-                console.log('has this been populated?', data)
               }, error => {
                 console.log('failure', error);
               });

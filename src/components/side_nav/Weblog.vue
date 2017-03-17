@@ -191,7 +191,6 @@
     },
     beforeMount() {
       this.fetchPosts();
-      console.log(this.$route);
     },
     watch: {
       '$route'(to, from) {
