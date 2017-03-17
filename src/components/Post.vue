@@ -88,11 +88,10 @@
             </div>
           </article>
 
-
           <article class="media"
                    v-if="replyRequest.request &&
                          comments.indexOf(comment) == replyRequest.index
-                         ">
+                        ">
             <figure class="media-left">
               <p class="image is-32x32">
                 <img :src="$store.state.session.github_avatar_url">
@@ -125,9 +124,6 @@
               </div>
             </div>
           </article>
-
-
-
         </div>
     </article>
 
@@ -236,7 +232,6 @@
     methods: {
       submitComment() {
         if (this.comment.content == "") {
-          console.log("need to add a field")
           this.commentField.isInfo = false;
           this.commentField.isDanger = true;
           this.commentField.message = "Please add a comment.";
@@ -288,7 +283,6 @@
       deleteComment(comment) {
         this.$http.delete('comments', { body: { _id: comment._id } })
           .then(response => {
-            console.log(this.comments.indexOf(comment));
             this.comments.splice(this.comments.indexOf(comment), 1);
           })
       },
