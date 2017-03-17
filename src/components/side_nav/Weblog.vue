@@ -147,7 +147,7 @@
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
 
-        <article class="message is-warning animated bounceIn">
+        <article class="message is-warning animated fadeIn">
           <div class="message-header">
             Warning!
             <button class="delete" @click="disableDeleteModal(post)"></button>
