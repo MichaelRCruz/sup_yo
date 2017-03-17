@@ -215,7 +215,6 @@
           })
           .then(data => {
             if (data.topic == this.topicId) {
-              // this.posts.push(data);
               this.posts.unshift(data);
 
             }
