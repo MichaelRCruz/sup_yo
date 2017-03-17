@@ -81,13 +81,26 @@
             <div class="media-content">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea"
-                            placeholder="Add a comment..."></textarea>
+                  <textarea class="textarea is-info"
+                            :class="{    'is-info': commentReplyField.isInfo,
+                                       'is-danger': commentReplyField.isDanger,
+                                      'is-success': commentReplyField.isSuccess
+                                    }"
+                            placeholder="Add a comment..."
+                            v-model="commentReply.content"
+                            v-on:keyup.enter="submitCommentReply(comment)"
+                  ></textarea>
+                </p>
+                <p class="help">
+                  {{ commentReplyField.message }}
                 </p>
               </div>
               <div class="field">
                 <p class="control">
-                  <button class="button">Post comment</button>
+                  <button class="button"
+                          @click="submitCommentReply(comment)">
+                          Submit Reply
+                  </button>
                 </p>
               </div>
 
@@ -116,15 +129,17 @@
                             }"
                     placeholder="Add a comment..."
                     v-model="comment.content"
-                    v-on:keyup.enter="submitComment()">
-          </textarea>
+                    v-on:keyup.enter="submitComment()"
+          ></textarea>
         </p>
         <p class="help">
           {{ commentField.message }}
         </p>
         <p class="control">
           <button class="button is-info"
-                  @click="submitComment()">Post comment</button>
+                  @click="submitComment()">
+                  Submit Comment
+          </button>
         </p>
       </div>
     </article>
@@ -148,6 +163,11 @@
           isDanger: false,
           message: ""
         },
+        commentReplyField: {
+          isInfo: true,
+          isDanger: false,
+          message: ""
+        },
         activated: false,
         userPost: {
           _id: this.$route.params.id,
@@ -158,8 +178,16 @@
         comment: {
           content: "",
           belongs_to: this.$route.params.id,
-          created_by: ""
+          created_by: "",
+          replied_to: null
         },
+        commentReply: {
+          content: "",
+          belongs_to: "",
+          created_by: "",
+          replied_to: ""
+        },
+        commentReplies: [],
         comments: []
       }
     },
@@ -185,7 +213,7 @@
           console.log("need to add a field")
           this.commentField.isInfo = false;
           this.commentField.isDanger = true;
-          this.commentField.message = "please add a comment";
+          this.commentField.message = "Please add a comment.";
         } else {
             this.$http.post('comments', this.comment)
               .then(response => {
@@ -202,6 +230,34 @@
             this.commentField.isDanger = false;
             this.commentField.isSuccess = true;
             this.commentField.message = "thanks :)";
+        }
+      },
+      submitCommentReply(comment) {
+        this.commentReply.replied_to = comment._id;
+        console.log('we are in');
+        console.log(this.commentReply)
+        if (this.commentReply.content == "") {
+          console.log("need to add a field")
+          this.commentReplyField.isInfo = false;
+          this.commentReplyField.isDanger = true;
+          this.commentReplyField.message = "Please add a reply.";
+        } else {
+            this.$http.post('comments', this.commentReply)
+              .then(response => {
+                return response.json();
+              })
+              .then(data => {
+                this.commentReplies.push(data);
+                this.activated = true;
+                this.commentReplies.content = "";
+                console.log('has this been populated?', data)
+              }, error => {
+                console.log('failure', error);
+              });
+            this.commentReplyField.isInfo = false;
+            this.commentReplyField.isDanger = false;
+            this.commentReplyField.isSuccess = true;
+            this.commentReplyField.message = "thanks :)";
         }
       },
       deleteComment(comment) {
