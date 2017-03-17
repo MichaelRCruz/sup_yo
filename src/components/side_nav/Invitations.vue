@@ -1,25 +1,6 @@
 <template lang="html">
   <div id="invitations">
 
-    <a class="button is-warning" @click="fetchData">Fetch Data</a>
-
-    <div class="tile is-ancestor animated bounceIn" v-for="user in users">
-      <div class="tile is-vertical is-8">
-        <div class="tile">
-
-          <div class="tile is-parent">
-            <article class="tile is-child notification is-info">
-              <p class="title">{{ user.name }}</p>
-              <p class="subtitle">With an image</p>
-              <figure class="image is-4by3">
-                <img :src="user.github_avatar_url">
-              </figure>
-            </article>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
 
   </div>
@@ -29,41 +10,7 @@
 <script>
 
   export default {
-    data() {
-      return {
-        user: {
-          name: '',
-          github_avatar_url: '',
-          phone: '',
-          email: '',
-          employer: '',
-          github: '',
-          linkedin: '',
-          facebook: '',
-          projects: ''
-        },
-        users: []
-      };
-    },
-    methods: {
-      submit() {
-        this.$http.post('', this.user)
-          .then(response => {
-            console.log(response);
-          }, error => {
-            console.log(error);
-          });
-      },
-      fetchData() {
-        this.$http.get('')
-          .then(response => {
-            return response.json();
-          })
-          .then(data => {
-            this.users = data;
-          });
-      }
-    }
+
   }
 
 </script>

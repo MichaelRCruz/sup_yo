@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-
+    <h1>Welcome to this app! Have a look around.</h1>
 
   </div>
 </template>
