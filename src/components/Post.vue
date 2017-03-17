@@ -178,12 +178,14 @@
         comment: {
           content: "",
           belongs_to: this.$route.params.id,
+          is_reply: false,
           created_by: "",
           replied_to: null
         },
         commentReply: {
           content: "",
-          belongs_to: "",
+          belongs_to: this.$route.params.id,
+          is_reply: true,
           created_by: "",
           replied_to: ""
         },
@@ -205,6 +207,13 @@
         })
         .then(data => {
           this.comments = data;
+        })
+      this.$http.get('comments/replies/' + this.$route.params.id)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.commentReplies = data;
         })
     },
     methods: {
@@ -234,10 +243,7 @@
       },
       submitCommentReply(comment) {
         this.commentReply.replied_to = comment._id;
-        console.log('we are in');
-        console.log(this.commentReply)
         if (this.commentReply.content == "") {
-          console.log("need to add a field")
           this.commentReplyField.isInfo = false;
           this.commentReplyField.isDanger = true;
           this.commentReplyField.message = "Please add a reply.";
@@ -249,7 +255,7 @@
               .then(data => {
                 this.commentReplies.push(data);
                 this.activated = true;
-                this.commentReplies.content = "";
+                this.commentReply.content = "";
                 console.log('has this been populated?', data)
               }, error => {
                 console.log('failure', error);
