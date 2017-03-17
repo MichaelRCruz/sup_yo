@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-    
+
 
   </div>
 </template>
@@ -13,8 +13,5 @@ export default {
 
 <style lang="css" scoped>
 
-  img {
-    border-radius: 0;
-  }
 
 </style>
