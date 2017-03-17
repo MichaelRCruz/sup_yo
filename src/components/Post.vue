@@ -68,12 +68,31 @@
             </small>
           </p>
 
+          <article class="media" v-for="commentReply in commentReplies"
+                                 v-if="commentReply.replied_to._id == comment._id">
+            <figure class="media-left">
+              <p class="image is-24x24">
+                <img :src="comment.created_by.github_avatar_url">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ comment.created_by.name }}</strong>
+                  <br>
+                    {{ commentReply.content }}
+                  <br>
+                  <small><a>Like</a> · 2 hrs</small>
+                </p>
+              </div>
+            </div>
+          </article>
 
 
           <article class="media"
                    v-if="replyRequest.request &&
-                         comments.indexOf(comment) == replyRequest.index &&
-                         commentReplyField.isActivated == true">
+                         comments.indexOf(comment) == replyRequest.index
+                         ">
             <figure class="media-left">
               <p class="image is-32x32">
                 <img :src="$store.state.session.github_avatar_url">
@@ -104,9 +123,6 @@
                   </button>
                 </p>
               </div>
-
-
-
             </div>
           </article>
 
@@ -167,8 +183,7 @@
         commentReplyField: {
           isInfo: true,
           isDanger: false,
-          message: "",
-          isActivated: true
+          message: ""
         },
         activated: false,
         userPost: {
@@ -263,6 +278,7 @@
               }, error => {
                 console.log('failure', error);
               });
+            this.replyRequest.request = false;
             this.commentReplyField.isInfo = false;
             this.commentReplyField.isDanger = false;
             this.commentReplyField.isSuccess = true;
