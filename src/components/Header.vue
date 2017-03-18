@@ -59,7 +59,7 @@
 
 </script>
 
-<style>
+<style scoped>
 
   .nav {
     background-color: #f8f8f8;

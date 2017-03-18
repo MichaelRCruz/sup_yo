@@ -91,7 +91,7 @@
   }
 </script>
 
-<style scoped>
+<style>
 
   .content-wrapper {
     overflow-y: scroll;
