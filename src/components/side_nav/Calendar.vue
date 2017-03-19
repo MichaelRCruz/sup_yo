@@ -1,7 +1,25 @@
 <template lang="html">
-  <div id="calendar">
+  <div id="calendar" class="animated fadeInRight">
 
-    <h1>March</h1>
+
+    <div class="tabs is-fullwidth">
+      <ul>
+        <li>
+          <a>
+            <span class="icon"><i class="fa fa-angle-left"></i></span>
+            <span>Left</span>
+          </a>
+        </li>
+        <h1>{{ moment.format("MMMM") }}</h1>
+        <li>
+          <a>
+            <span>Right</span>
+            <span class="icon"><i class="fa fa-angle-right"></i></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
     <div class="month">
       <div class="titles">
         <div class="dayNames" v-for="day in days">
@@ -12,51 +30,6 @@
         <div class="day" v-for="day in days"></div>
       </div>
     </div>
-        <!-- <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day">6</div>
-        <div class="day">7</div>
-      </div>
-      <div class="week">
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">11</div>
-        <div class="day">12</div>
-        <div class="day">13</div>
-        <div class="day">14</div>
-      </div>
-      <div class="week">
-        <div class="day">15</div>
-        <div class="day">16</div>
-        <div class="day">17</div>
-        <div class="day">18</div>
-        <div class="day">19</div>
-        <div class="day">20</div>
-        <div class="day">21</div>
-      </div>
-      <div class="week">
-        <div class="day">22</div>
-        <div class="day">23</div>
-        <div class="day">24</div>
-        <div class="day">25</div>
-        <div class="day">26</div>
-        <div class="day">27</div>
-        <div class="day">28</div>
-      </div>
-      <div class="week">
-        <div class="day">29</div>
-        <div class="day">30</div>
-        <div class="day">31</div>
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
-        <div class="day"></div>
-      </div>
-    </div> -->
-
 
 
   </div>
@@ -74,7 +47,8 @@
     data() {
       return {
         weeks: [1 ,2, 3, 4, 5],
-        days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        moment: moment()
       }
     }
 
