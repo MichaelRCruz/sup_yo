@@ -64,6 +64,11 @@
 
 
 <script scoped>
+  import moment from 'moment';
+  let a = moment();
+
+  console.log(moment());
+  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
   export default {
 
     data() {
@@ -85,7 +90,7 @@
 
   .week {
     display: flex;
-    height: 100px;
+    height: 90px;
   }
 
   .day {
