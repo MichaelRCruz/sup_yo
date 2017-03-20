@@ -5,14 +5,14 @@
     <div class="tabs is-fullwidth">
       <ul>
         <li>
-          <a>
+          <a @click="lastMonth(moment)">
             <span class="icon"><i class="fa fa-angle-left"></i></span>
             <span>Left</span>
           </a>
         </li>
-        <h1>{{ moment.format("MMMM") }}</h1>
+        <h1>{{ moment.format('MMMM') }}</h1>
         <li>
-          <a>
+          <a @click="nextMonth(moment)">
             <span>Right</span>
             <span class="icon"><i class="fa fa-angle-right"></i></span>
           </a>
@@ -38,20 +38,25 @@
 
 <script scoped>
   import moment from 'moment';
-  let a = moment();
 
-  console.log(moment());
-  console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
   export default {
-
     data() {
       return {
         weeks: [1 ,2, 3, 4, 5],
         days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         moment: moment()
+        }
+      },
+      methods: {
+        nextMonth(moment) {
+          this.moment = moment.clone().add(1, 'months');
+          console.log(this.moment);
+        },
+        lastMonth(moment) {
+          this.moment = moment.clone().subtract(1, 'months');
+          console.log(this.moment);
+        }
       }
-    }
-
   }
 </script>
 

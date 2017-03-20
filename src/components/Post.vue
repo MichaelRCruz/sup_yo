@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="post" class="">
+  <div id="post" class="animated fadeInRight">
 
 
     <div class="box">
