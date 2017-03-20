@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="weblog" class="animated fadeInRight">
+  <div id="weblog" class="">
 
     <div class="tabs is-boxed is-right">
       <ul>
