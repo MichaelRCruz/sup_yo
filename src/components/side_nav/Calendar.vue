@@ -42,19 +42,38 @@
   export default {
     data() {
       return {
-        weeks: [1 ,2, 3, 4, 5],
+        month: [],
+        weeks: [1, 2, 3, 4, 5],
         days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         moment: moment()
         }
       },
+      beforeMount() {
+        this.setDates();
+      },
       methods: {
         nextMonth(moment) {
           this.moment = moment.clone().add(1, 'months');
-          console.log(this.moment);
+          this.setDates();
+          console.log('toggle forward', this.month);
         },
         lastMonth(moment) {
           this.moment = moment.clone().subtract(1, 'months');
-          console.log(this.moment);
+          this.setDates();
+          console.log('toggle backward', this.month);
+        },
+        setDates() {
+          this.month = [];
+          var fun = this.moment.clone().startOf('month').startOf('week');
+          for (let i = 0; i < 35; i++) {
+            this.month.push(fun.clone());
+            var fun = fun.clone().add(1, 'day');
+          }
+        }
+      },
+      computed: {
+        testFunction() {
+          console.log('Hello, world.');
         }
       }
   }
