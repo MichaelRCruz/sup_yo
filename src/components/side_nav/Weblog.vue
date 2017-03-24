@@ -39,7 +39,7 @@
             <span>Development</span>
           </a>
         </router-link>
-        <li>
+        <li id="createPost" class="animated shake">
           <a class="button is-outlined is-info" @click="activate()">Create Post</a>
         </li>
       </ul>
@@ -268,6 +268,12 @@
 
   .fa-trash {
     color: #fedc57;
+  }
+
+  #createPost {
+  /*-webkit-animation-duration: 3s;*/
+  -webkit-animation-delay: 1.5s;
+  /*-vendor-animation-iteration-count: infinite;*/
   }
 
 </style>

@@ -65,17 +65,11 @@
         setDates() {
           this.month = [];
           var fun = this.moment.clone().startOf('month').startOf('week');
-          // console.log('this.moment', this.moment.dayOfYear());
-          // console.log('this.moment.clone()', this.moment.clone().dayOfYear());
-          // console.log('LALALALALALALALALALAL', fun.dayOfYear() != this.moment.startOf('month').startOf('week').dayOfYear());
-          for (let i = 0; i < 35; i++) {
+          var end = this.moment.clone().endOf('month').endOf('week');
+          while (fun < end) {
             this.month.push(fun.clone());
-            fun = fun.clone().add(1, 'day');
+            fun.add(1, 'day');
           }
-          // while (please != fun.endOf('month').endOf('week').dayOfYear()) {
-          //   this.month.push(fun.clone());
-          //   var fun = this.moment.clone().add(1, 'day');
-          // }
         }
       },
       computed: {
