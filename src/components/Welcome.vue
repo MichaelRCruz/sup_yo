@@ -49,22 +49,12 @@
               ...this was originally supposed to be a company directory, but I am now sort of pivoting
               towards some sort of job-search helper or whatever.
               Who knows what the future will bring. While browsing this application,
-              please keep in mind that it is in the very early stages of development.
+              please keep in mind that it is in the early stages of development.
               Most features will not work yet. Some buttons may not work yet.
             </h2>
             <br>
-            <h1 class="title">
-              If you don't have a GitHub account...
-            </h1>
             <h2 class="subtitle">
-              This application is targeted towards developers and uses oauth.
-              If you don't have a GitHub account,
-              you can use these credentials.
-              <br>
-              <br>
-              <br>
-              <br>
-              Also, I am a really really good web developer. If you have a job, you should probably give me one.
+              Also, I am a really really good web developer. If you have a job, you should probably give me one ;)
             </h2>
           </div>
         </div>
