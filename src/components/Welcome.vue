@@ -31,7 +31,7 @@
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
-                  <span>Login</span>
+                  <span>Login With GitHub</span>
                 </a>
               </span>
             </div>
@@ -43,10 +43,15 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
-              Company Directory
+              Nameless Application
             </h1>
             <h2 class="subtitle">
-              ...another cool thing by Michael Cruz.
+              ...this was originally supposed to be a company directory, but I am now sort of pivoting
+              towards some sort of job-search helper or whatever.
+              Who knows what the future will bring.
+              <br>
+              <br>
+              Also, I am a really really good web developer. If you have a job, you should probably give me one.
             </h2>
           </div>
         </div>
