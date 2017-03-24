@@ -11,7 +11,11 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueAxios, axios);
 
-Vue.http.options.root = 'http://localhost:3000/api'
+if (location.host == "localhost:8080") {
+  Vue.http.options.root = 'http://localhost:3000/api'
+} else {
+  Vue.http.options.root = 'http://a1-api.herokuapp.com/api'
+}
 Vue.http.interceptors.push((request, next) => {
     request.credentials = true;
     next();
