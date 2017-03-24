@@ -110,13 +110,13 @@
                                  == comment._id">
             <figure class="media-left">
               <p class="image is-24x24">
-                <img :src="comment.created_by.github_avatar_url">
+                <img :src="commentReply.created_by.github_avatar_url">
               </p>
             </figure>
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>{{ comment.created_by.name }}</strong>
+                  <strong>{{ commentReply.created_by.name }}</strong>
                   <br>
                     {{ commentReply.content }}
                   <br>

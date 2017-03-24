@@ -98,7 +98,7 @@
         <p class="control">
           <textarea class="textarea" placeholder="...post content" v-model="post.content"></textarea>
         </p>
-        <p class="control">
+        <!-- <p class="control">
           <label class="checkbox">
             <input type="checkbox">
             Remember me
@@ -107,7 +107,7 @@
             <input type="checkbox">
             Remember me
           </label>
-        </p>
+        </p> -->
         <p class="control">
           <label class="radio">
             <input type="radio" name="question" value="general" v-model="post.topic">
