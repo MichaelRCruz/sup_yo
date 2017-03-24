@@ -1,55 +1,35 @@
 <template lang="html">
-  <div id="calendar">
+  <div id="calendar" class="animated fadeInRight">
 
 
-    <div class="month">
-      <div class="week">
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">4</div>
-        <div class="day">4</div>
-        <div class="day">4</div>
-      </div>
-      <div class="week">
-        <div class="day">5</div>
-        <div class="day">6</div>
-        <div class="day">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">11</div>
-      </div>
-      <div class="week">
-        <div class="day">12</div>
-        <div class="day">13</div>
-        <div class="day">14</div>
-        <div class="day">15</div>
-        <div class="day">16</div>
-        <div class="day">17</div>
-        <div class="day">18</div>
-      </div>
-      <div class="week">
-        <div class="day">19</div>
-        <div class="day">20</div>
-        <div class="day">21</div>
-        <div class="day">22</div>
-        <div class="day">23</div>
-        <div class="day">24</div>
-        <div class="day">25</div>
-      </div>
-      <div class="week">
-        <div class="day">26</div>
-        <div class="day">27</div>
-        <div class="day">28</div>
-        <div class="day">29</div>
-        <div class="day">30</div>
-        <div class="day">31</div>
-        <div class="day">31</div>
-      </div>
+    <div class="tabs is-fullwidth">
+      <ul>
+        <li>
+          <a @click="lastMonth(moment)">
+            <span class="icon"><i class="fa fa-angle-left"></i></span>
+            <span>Left</span>
+          </a>
+        </li>
+        <h1>{{ moment.format('MMMM') }}</h1>
+        <li>
+          <a @click="nextMonth(moment)">
+            <span>Right</span>
+            <span class="icon"><i class="fa fa-angle-right"></i></span>
+          </a>
+        </li>
+      </ul>
     </div>
 
+    <div class="month">
+      <div class="titles">
+        <div class="dayNames" v-for="day in days">
+          {{ day }}
+        </div>
+      </div>
+      <div class="week" v-for="week in weeks">
+        <div class="day" v-for="day in days"></div>
+      </div>
+    </div>
 
 
   </div>
@@ -57,14 +37,46 @@
 
 
 <script scoped>
-  export default {
+  import moment from 'moment';
 
+  export default {
     data() {
       return {
-
+        month: [],
+        weeks: [1, 2, 3, 4, 5],
+        days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        moment: moment()
+        }
+      },
+      beforeMount() {
+        this.setDates();
+      },
+      methods: {
+        nextMonth(moment) {
+          this.moment = moment.clone().add(1, 'months');
+          this.setDates();
+          console.log('toggle forward', this.month);
+        },
+        lastMonth(moment) {
+          this.moment = moment.clone().subtract(1, 'months');
+          this.setDates();
+          console.log('toggle backward', this.month);
+        },
+        setDates() {
+          this.month = [];
+          var fun = this.moment.clone().startOf('month').startOf('week');
+          var end = this.moment.clone().endOf('month').endOf('week');
+          while (fun < end) {
+            this.month.push(fun.clone());
+            fun.add(1, 'day');
+          }
+        }
+      },
+      computed: {
+        testFunction() {
+          console.log('Hello, world.');
+        }
       }
-    }
-
   }
 </script>
 
@@ -77,14 +89,14 @@
 
   .week {
     display: flex;
-    height: 100px;
+    height: 90px;
   }
 
   .day {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-    color: #00d1b2;
+    color: #232323;
     padding: 10px;
     box-shadow:
       -1px -1px #00d1b2,
@@ -94,6 +106,23 @@
   .month {
     max-width: 860px;
     margin: 20px auto;
+  }
+
+  .titles {
+    display: flex;
+    height: 25px;
+  }
+
+  .dayNames {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    color: #232323;
+    padding: 0px;
+    box-shadow:
+      -1px -1px #00d1b2,
+      inset -1px -1px 0 0 #00d1b2;
+    margin: 0 auto;
   }
 
   /*.week:first-of-type .day:first-of-type {

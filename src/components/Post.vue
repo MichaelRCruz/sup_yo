@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="post" class="">
+  <div id="post" class="animated fadeInRight">
 
 
     <div class="box">
@@ -60,10 +60,10 @@
               · <a class="reply" @click="requestReply(comment)">
                  Reply
                 </a>
-                · <a class="remove is-warning"
+                <!-- · <a class="remove is-warning"
                       v-if="$store.state.session._id == comment.created_by._id"
                       @click="deleteComment(comment)">delete
-                 ·</a>
+                 ·</a> -->
                  3 hrs
             </small>
           </p>

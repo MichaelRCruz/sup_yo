@@ -16,7 +16,7 @@
               <span></span>
             </span>
             <div class="nav-right nav-menu">
-              <a class="nav-item is-active">
+              <!-- <a class="nav-item is-active">
                 Home
               </a>
               <a class="nav-item">
@@ -24,14 +24,14 @@
               </a>
               <a class="nav-item">
                 Documentation
-              </a>
+              </a> -->
               <span class="nav-item">
                 <!-- <a class="button is-primary is-inverted" @click="makeActive()"> -->
                 <a class="button is-primary is-inverted" href="http://a1-api.herokuapp.com/auth/github">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
-                  <span>Login</span>
+                  <span>Login With GitHub</span>
                 </a>
               </span>
             </div>
@@ -43,10 +43,18 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
-              Company Directory
+              Nameless Application
             </h1>
             <h2 class="subtitle">
-              ...another cool thing by Michael Cruz.
+              ...this was originally supposed to be a company directory, but I am now sort of pivoting
+              towards some sort of job-search helper or whatever.
+              Who knows what the future will bring. While browsing this application,
+              please keep in mind that it is in the early stages of development.
+              Most features will not work yet. Some buttons may not work yet.
+            </h2>
+            <br>
+            <h2 class="subtitle">
+              Also, I am a really really good web developer. If you have a job, you should probably give me one ;)
             </h2>
           </div>
         </div>

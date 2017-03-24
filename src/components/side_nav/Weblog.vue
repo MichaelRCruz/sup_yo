@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="weblog">
+  <div id="weblog" class="">
 
     <div class="tabs is-boxed is-right">
       <ul>
@@ -39,7 +39,7 @@
             <span>Development</span>
           </a>
         </router-link>
-        <li>
+        <li id="createPost" class="animated shake">
           <a class="button is-outlined is-info" @click="activate()">Create Post</a>
         </li>
       </ul>
@@ -77,7 +77,7 @@
               <span class="icon is-small"><i class="fa fa-heart"></i></span>
             </a>
             <a class="level-item" v-if="$store.state.session._id == post.created_by._id">
-              <span class="icon is-small"><i class="fa fa-trash" @click="activateDeleteModal(post)"></i></span>
+              <!-- <span class="icon is-small"><i class="fa fa-trash" @click="activateDeleteModal(post)"></i></span> -->
             </a>
           </div>
         </nav>
@@ -268,6 +268,12 @@
 
   .fa-trash {
     color: #fedc57;
+  }
+
+  #createPost {
+  /*-webkit-animation-duration: 3s;*/
+  -webkit-animation-delay: 1.5s;
+  /*-vendor-animation-iteration-count: infinite;*/
   }
 
 </style>
