@@ -26,7 +26,7 @@
             </figure>
             Profile
           </a>
-          <a href="http://localhost:3000/logout" class="nav-item is-tab">Log out</a>
+          <a href="http://a1-api.herokuapp.com/logout" class="nav-item is-tab">Log out</a>
         </div>
       </div>
     </nav>

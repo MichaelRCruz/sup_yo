@@ -27,7 +27,7 @@
               </a>
               <span class="nav-item">
                 <!-- <a class="button is-primary is-inverted" @click="makeActive()"> -->
-                <a class="button is-primary is-inverted" href="http://localhost:3000/auth/github">
+                <a class="button is-primary is-inverted" href="http://a1-api.herokuapp.com/auth/github">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
@@ -58,7 +58,7 @@
       <div class="modal-content">
         <!-- Any other Bulma elements you want -->
 
-        <a class="button is-large animated bounceIn" href="http://localhost:3000/auth/github">
+        <a class="button is-large animated bounceIn" href="http://a1-api.herokuapp.com/">
           <span class="icon is-medium">
             <i class="fa fa-github"></i>
           </span>
