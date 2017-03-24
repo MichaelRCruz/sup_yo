@@ -6,6 +6,6 @@
  "private": true,
  "scripts": {
    "postinstall": "npm install express",
-   "start": "node ../server.js"
+   "start": "node server.js"
  }
 }
