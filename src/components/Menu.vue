@@ -25,15 +25,15 @@
           <ul class="menu-list">
             <li>
               <router-link tag="a" to="/dashboard/team-settings" active-class="is-active" exact>
-                Team Settings
+                Placeholder Text
               </router-link>
             </li>
             <li>
               <a>Manage Your Team</a>
               <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
+                <li><a>Placeholder Text</a></li>
+                <li><a>Placeholder Text</a></li>
+                <li><a>Placeholder Text</a></li>
               </ul>
             </li>
             <li>
@@ -43,12 +43,12 @@
             </li>
             <li>
               <router-link tag="a" to="/dashboard/cloud-storage" active-class="is-active" exact>
-                Cloud Storage Env Settings
+                Placeholder Text
               </router-link>
             </li>
             <li>
               <router-link tag="a" to="/dashboard/authentication" active-class="is-active" exact>
-                Authentication
+                Placeholder Text
               </router-link></li>
           </ul>
           <p class="menu-label">
@@ -57,17 +57,17 @@
           <ul class="menu-list">
             <li>
               <router-link tag="a" to="/dashboard/payments" active-class="is-active" exact>
-                Payments
+                Placeholder Text
               </router-link>
             </li>
             <li>
               <router-link tag="a" to="/dashboard/transfers" active-class="is-active" exact>
-                Transfers
+                Placeholder Text
               </router-link>
             </li>
             <li>
               <router-link tag="a" to="/dashboard/balance" active-class="is-active" exact>
-                Balance
+                Placeholder Text
               </router-link>
             </li>
           </ul>
