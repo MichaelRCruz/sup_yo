@@ -27,7 +27,18 @@
               </a> -->
               <span class="nav-item">
                 <!-- <a class="button is-primary is-inverted" @click="makeActive()"> -->
-                <a class="button is-primary is-inverted" href="http://a1-api.herokuapp.com/auth/github">
+                <!-- <a class="button is-primary is-inverted" href="http://a1-api.herokuapp.com/auth/github"> -->
+                <a class="button is-primary is-inverted"
+                    href="http://localhost:3000/auth/github"
+                    v-if="locationHost == 'localhost:8080'">
+                  <span class="icon">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span>Login With GitHub</span>
+                </a>
+                <a class="button is-primary is-inverted"
+                   href="http://a1-api.herokuapp.com/auth/github"
+                   v-else>
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
@@ -87,6 +98,7 @@ export default {
 
   data() {
     return {
+      locationHost: location.host,
       activated: false
     }
   },

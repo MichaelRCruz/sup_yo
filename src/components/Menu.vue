@@ -18,7 +18,7 @@
                 Weblog
               </router-link>
             </li>
-          </ul>
+          <!-- </ul>
           <p class="menu-label">
             Administration
           </p>
@@ -70,7 +70,7 @@
                 Placeholder Text
               </router-link>
             </li>
-          </ul>
+          </ul> -->
         </aside>
 
       </div>

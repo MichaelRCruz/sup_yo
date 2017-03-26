@@ -26,7 +26,16 @@
             </figure>
             Profile
           </a>
-          <a href="http://a1-api.herokuapp.com/logout" class="nav-item is-tab">Log out</a>
+          <a href="http://localhost:3000/logout"
+             class="nav-item is-tab"
+             v-if="locationHost == 'localhost:8080'">
+             Log out
+          </a>
+          <a href="http://a1-api.herokuapp.com/logout"
+             class="nav-item is-tab"
+             v-else>
+             Log out
+          </a>
         </div>
       </div>
     </nav>
@@ -41,6 +50,7 @@
   export default {
     data() {
       return {
+        locationHost: location.host,
         user: {
           github_avatar_url: ""
         }
