@@ -2,11 +2,30 @@
   <div id="calendar" class="animated fadeInRight">
 
 
-    <div class="toggle"></div>
+    <div class="toggle">
+      <span>
+        <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
+      </span>
+      <span>
+        {{ this.moment.format('MMM') }}
+      </span>
+      <span>
+        <i @click="nextMonth(moment)" class="fa fa-arrow-circle-right"></i>
+      </span>
+    </div>
+
+    <div class="weekdays">
+      <span>
+        <i class="fa fa-arrow-circle-left"></i>
+      </span>
+      <span>
+        <i class="fa fa-arrow-circle-right"></i>
+      </span>
+    </div>
+
     <div class="parent">
       <div class="child" v-for="days in month"></div>
     </div>
-
 
   </div>
 </template>
@@ -70,17 +89,25 @@
     margin-bottom: 5px;
   }
 
+  .weekday {
+    border: 1px solid black;
+    width: 300px;
+    height: 20px;
+    margin-bottom: 5px;
+  }
+
   .parent {
     display: flex;
     flex-flow: row wrap;
-    /*border: 1px solid black;*/
-    width: 300px;
-    height: 200px;
+    flex-grow: 1;
+    width: 307px;
   }
   .child {
-    flex: 1 0 14.2%;
+    flex: 1 0 12.2%;
     border: 1px solid black;
-    /*margin: 1px;*/
+    height: 40px;
+
+    margin: 1px;
   }
 
 </style>
