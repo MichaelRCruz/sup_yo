@@ -14,11 +14,9 @@
       </span>
     </div>
 
-    <div class="weekdays">
-      <div class="dayContainer">
-        <span class="dayNames" v-for="days in weekdays">
-          {{ days }}
-        </span>
+    <div class="dayNameContainer">
+      <div class="dayNames" v-for="days in weekdays">
+        {{ days }}
       </div>
     </div>
 
@@ -86,20 +84,6 @@
     padding: 30px 30px 30px 0;
   }
 
-  .dayNames {
-    margin-right: 14px;
-    font: monospace;
-  }
-
-  .dayNames:first-child {
-    margin-left: 5px;
-    color: red;
-  }
-
-  .dayContainer {
-    margin: 0 auto;
-  }
-
   .toggle {
     border: 1px solid black;
     width: 307px;
@@ -107,11 +91,23 @@
     margin-bottom: 5px;
   }
 
-  .weekdays {
+  .dayNameContainer {
     border: 1px solid black;
     width: 307px;
+    height: 24px;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+  }
+
+  .dayNames {
+    margin-right: 14px;
+    font: monospace;
+    flex: 1 0 12.2%;
+    border: 1px solid #bdbdbd;
     height: 20px;
-    margin-bottom: 5px;
+    margin: 1px;
+    border-radius: 2px;
   }
 
   .parent {
