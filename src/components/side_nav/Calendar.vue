@@ -15,16 +15,17 @@
     </div>
 
     <div class="weekdays">
-      <span>
-        <i class="fa fa-arrow-circle-left"></i>
-      </span>
-      <span>
-        <i class="fa fa-arrow-circle-right"></i>
-      </span>
+      <div class="dayContainer">
+        <span class="dayNames" v-for="days in weekdays">
+          {{ days }}
+        </span>
+      </div>
     </div>
 
     <div class="parent">
-      <div class="child" v-for="days in month"></div>
+      <div class="child" v-for="date in month" @click="selectDate(date)">
+        {{ date.format('D') }}
+      </div>
     </div>
 
   </div>
@@ -39,7 +40,7 @@
       return {
         month: [],
         weeks: [1, 2, 3, 4, 5],
-        days: ["Sunday" ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
         moment: moment()
         }
       },
@@ -65,6 +66,9 @@
             this.month.push(fun.clone());
             fun.add(1, 'day');
           }
+        },
+        selectDate(date) {
+          console.log(date);
         }
       },
       computed: {
@@ -82,16 +86,30 @@
     padding: 30px 30px 30px 0;
   }
 
+  .dayNames {
+    margin-right: 14px;
+    font: monospace;
+  }
+
+  .dayNames:first-child {
+    margin-left: 5px;
+    color: red;
+  }
+
+  .dayContainer {
+    margin: 0 auto;
+  }
+
   .toggle {
     border: 1px solid black;
-    width: 300px;
+    width: 307px;
     height: 20px;
     margin-bottom: 5px;
   }
 
-  .weekday {
+  .weekdays {
     border: 1px solid black;
-    width: 300px;
+    width: 307px;
     height: 20px;
     margin-bottom: 5px;
   }
@@ -104,10 +122,10 @@
   }
   .child {
     flex: 1 0 12.2%;
-    border: 1px solid black;
+    border: 1px solid #bdbdbd;
     height: 40px;
-
     margin: 1px;
+    border-radius: 2px;
   }
 
 </style>
