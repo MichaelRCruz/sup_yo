@@ -2,33 +2,9 @@
   <div id="calendar" class="animated fadeInRight">
 
 
-    <div class="tabs is-fullwidth">
-      <ul>
-        <li>
-          <a @click="lastMonth(moment)">
-            <span class="icon"><i class="fa fa-angle-left"></i></span>
-            <span>Left</span>
-          </a>
-        </li>
-        <h1>{{ moment.format('MMMM') }}</h1>
-        <li>
-          <a @click="nextMonth(moment)">
-            <span>Right</span>
-            <span class="icon"><i class="fa fa-angle-right"></i></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="month">
-      <div class="titles">
-        <div class="dayNames" v-for="day in days">
-          {{ day }}
-        </div>
-      </div>
-      <div class="week" v-for="week in weeks">
-        <div class="day" v-for="day in days"></div>
-      </div>
+    <div class="toggle"></div>
+    <div class="parent">
+      <div class="child" v-for="days in month"></div>
     </div>
 
 
@@ -87,49 +63,24 @@
     padding: 30px 30px 30px 0;
   }
 
-  .week {
+  .toggle {
+    border: 1px solid black;
+    width: 300px;
+    height: 20px;
+    margin-bottom: 5px;
+  }
+
+  .parent {
     display: flex;
-    height: 90px;
+    flex-flow: row wrap;
+    /*border: 1px solid black;*/
+    width: 300px;
+    height: 200px;
+  }
+  .child {
+    flex: 1 0 14.2%;
+    border: 1px solid black;
+    /*margin: 1px;*/
   }
 
-  .day {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    color: #232323;
-    padding: 10px;
-    box-shadow:
-      -1px -1px #00d1b2,
-      inset -1px -1px 0 0 #00d1b2;
-  }
-
-  .month {
-    max-width: 860px;
-    margin: 20px auto;
-  }
-
-  .titles {
-    display: flex;
-    height: 25px;
-  }
-
-  .dayNames {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
-    color: #232323;
-    padding: 0px;
-    box-shadow:
-      -1px -1px #00d1b2,
-      inset -1px -1px 0 0 #00d1b2;
-    margin: 0 auto;
-  }
-
-  /*.week:first-of-type .day:first-of-type {
-    margin-left: 42.9%;
-  }
-
-  .week:last-of-type .day:last-of-type {
-    margin-right: 14.285%;
-  }*/
 </style>
