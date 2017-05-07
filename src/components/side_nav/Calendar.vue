@@ -8,7 +8,10 @@
         <div class="input-group-addon" @click="focus()">
           <i class="fa fa-calendar"></i>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="MM/DD/YYYY" :value="this.selectionDisplay" @click="focus()">
+        <input type="text"
+               class="form-control" id="inlineFormInputGroup" placeholder="MM/DD/YYYY"
+               :value="this.selectionDisplay"
+               @click="focus()">
       </div>
     </form>
 
@@ -55,7 +58,7 @@
       return {
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        availableDates: [],
+        availableDates: [moment().subtract(1, "month"), moment().add(1, "month")],
         datesRange: [ moment().add(12, 'days').unix(), moment().add(18, 'days').unix() ],
         moment: moment(),
         selectionDisplay: "",
@@ -114,12 +117,20 @@
         }
       },
       selectDate(date) {
+        var _self = this;
         if ( date.unix() >= this.datesRange[0]
              && date.unix() <= this.datesRange[1] ) {
           this.selectionDisplay = date.format('MM/DD/YYYY');
           this.selection = date;
           this.active = false;
         }
+        this.availableDates.forEach(function(el) {
+          if (el.format('LL') == date.format('LL')) {
+            _self.selectionDisplay = date.format('MM/DD/YYYY');
+            _self.selection = date;
+            _self.active = false;
+          }
+        });
       },
       focus() {
         this.active = !this.active;
