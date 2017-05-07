@@ -55,7 +55,7 @@
       return {
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        restricted: [],
+        availableDates: [],
         moment: moment(),
         selection: "",
         active: false
@@ -64,13 +64,18 @@
     computed: {
       filterDate() {
         var _self = this;
-        var caught = false;
         return this.month.map(function(e) {
           var color = '#ACE496';
-          if ( e.format('M') != _self.moment.format('M') && caught != true) {
+          var available = false;
+          _self.availableDates.forEach(function(el) {
+            if (el.format('LL') == e.format('LL')) {
+              available = true;
+              color = 'red';
+            }
+          });
+          if (e.format('M') != _self.moment.format('M')) {
             color = '#dcf4d3';
           }
-
           e['style'] = { backgroundColor: color }
           return e
         })
@@ -78,13 +83,15 @@
     },
     beforeMount() {
       this.setDates();
+      // this.availableDates.push(this.moment.clone().add(1, 'd'));
+      // this.availableDates.push(this.moment.clone().add(2, 'd'));
       for (var i = 1; i <= 365; i++) {
-        this.restricted.push(moment().clone().add(i, 'd'));
+        this.availableDates.push(this.moment.clone().add(i, 'd'));
       }
       for (var i = 365; i > 0; i--) {
-        this.restricted.push(moment().clone().subtract(i, 'd'));
+        this.availableDates.push(this.moment.clone().subtract(i, 'd'));
       }
-      console.log(this.restricted);
+      console.log(this.availableDates);
     },
     methods: {
       nextMonth(moment) {
