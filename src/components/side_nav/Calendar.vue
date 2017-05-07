@@ -2,6 +2,17 @@
   <div id="calendar" class="animated fadeInRight">
 
 
+    <form class="form-inline">
+      <label class="sr-only" for="inlineFormInputGroup"></label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon" @click="focus()">
+          <i class="fa fa-calendar"></i>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="MM/DD/YYYY" :value="this.selection" @click="focus()">
+      </div>
+    </form>
+
+    <div v-show="active">
       <div class="toggleContainer">
           <div class="toggle toggleLeft">
             <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
@@ -28,6 +39,7 @@
           {{ date.format('D') }}
         </div>
       </div>
+    </div>
 
   </div>
 </template>
@@ -41,7 +53,9 @@
       return {
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        moment: moment()
+        moment: moment(),
+        selection: "",
+        active: false
         }
       },
       computed: {
@@ -82,17 +96,33 @@
           }
         },
         selectDate(date) {
-          console.log(date);
+          this.selection = date.format('MM/DD/YYYY');
+          this.active = false;
+        },
+        focus() {
+          if (this.active == true) {
+            this.active = false;
+          } else if (this.active == false) {
+            this.active = true
+          }
         }
       }
   }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 
   #calendar {
     flex: 1;
     padding: 30px 30px 30px 0;
+  }
+
+  .form-inline {
+    margin-bottom: 15px;
+  }
+
+  .input-group-addon {
+    cursor: pointer;
   }
 
   .toggleContainer {
@@ -108,17 +138,26 @@
     text-align: left;
     flex: 1;
     margin-left: 15px;
+    font-size: 20px;
+    cursor: pointer;
   }
 
   .currentMonth {
     text-align: center;
-    flex: 1
+    flex: 1;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 17px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;
   }
 
   .toggleRight {
     text-align: right;
     flex: 1;
     margin-right: 15px;
+    font-size: 20px;
+    cursor: pointer;
   }
 
   .dayNameContainer {
@@ -136,6 +175,7 @@
     height: 20px;
     margin: 1px;
     border-radius: 2px;
+    font-family: 'Archivo Black', sans-serif;
   }
 
   .parent {
@@ -144,6 +184,7 @@
     flex-grow: 1;
     width: 307px;
   }
+
   .child {
     flex: 1 0 12.2%;
     border: 1px solid #bdbdbd;
@@ -154,6 +195,7 @@
     text-align: center;
     vertical-align: middle;
     line-height: 40px;
+    cursor: pointer;
   }
 
 </style>
