@@ -22,8 +22,9 @@
 
     <div class="parent">
       <div class="child"
-           v-for="date in month"
-           @click="selectDate(date)">
+           v-for="date in filterDate"
+           @click="selectDate(date)"
+           :style="date.style">
         {{ date.format('D') }}
       </div>
     </div>
@@ -42,6 +43,20 @@
         weeks: [1, 2, 3, 4, 5],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
         moment: moment()
+        }
+      },
+      computed: {
+        filterDate() {
+          return this.month.map(function(e) {
+            var color = '#dcdcdc';
+            if (e.format('D') > 10) {
+              color = '#ffffff'
+            }
+
+            e['style'] = { backgroundColor: color }
+            console.log(e)
+            return e
+          })
         }
       },
       beforeMount() {
@@ -69,11 +84,6 @@
         },
         selectDate(date) {
           console.log(date);
-        }
-      },
-      computed: {
-        testFunction(date) {
-          return date.format('MMM')
         }
       }
   }
