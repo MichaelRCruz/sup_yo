@@ -1,6 +1,13 @@
 <template lang="html">
-  <div id="calendar" class="animated fadeInRight">
+  <div id="calendar">
 
+    <div>
+        <vue-slider id="slider"
+                    ref="slider"
+                    v-bind="sliderOptions"
+                    v-model="sliderOptions.value">
+        </vue-slider>
+    </div>
 
     <form class="form-inline">
       <label class="sr-only" for="inlineFormInputGroup"></label>
@@ -15,7 +22,7 @@
       </div>
     </form>
 
-    <div v-show="active" class="animated bounceIn">
+    <div v-show="active">
       <div class="toggleContainer">
           <div class="toggle toggleLeft">
             <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
@@ -52,6 +59,7 @@
 
 <script scoped>
   import moment from 'moment';
+  import vueSlider from 'vue-slider-component';
 
   export default {
     data() {
@@ -63,7 +71,33 @@
         moment: moment(),
         selectionDisplay: "",
         selection: {},
-        active: false
+        active: false,
+        sliderOptions: {
+          value: [
+            0,
+            100
+          ],
+          width: "100%",
+          height: 8,
+          dotSize: 16,
+          min: 0,
+          max: 500,
+          disabled: false,
+          show: true,
+          tooltip: "always",
+          // formatter: "¥{value}",
+          bgStyle: {
+            "backgroundColor": "#fff",
+            "boxShadow": "inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)"
+          },
+          tooltipStyle: {
+            "backgroundColor": "#666",
+            "borderColor": "#666"
+          },
+          processStyle: {
+            "backgroundColor": "#999"
+          }
+        }
       }
     },
     computed: {
@@ -87,10 +121,16 @@
           if (e.format('M') != _self.moment.format('M')) {
             color = '#dcf4d3';
           }
-          e['style'] = { backgroundColor: color, border: borderColor, cursor: cursorStyle }
+          e['style'] = { backgroundColor: color,
+                         border: borderColor,
+                         cursor: cursorStyle
+                       }
           return e
         })
       }
+    },
+    components: {
+      vueSlider
     },
     beforeMount() {
       this.setDates();
@@ -144,6 +184,10 @@
   #calendar {
     flex: 1;
     padding: 30px 30px 30px 0;
+  }
+
+  #slider {
+    margin: 20px;
   }
 
   .form-inline {
