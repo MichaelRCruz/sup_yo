@@ -12,7 +12,7 @@
       </div>
     </form>
 
-    <div v-show="active">
+    <div v-show="active" class="animated bounceIn">
       <div class="toggleContainer">
           <div class="toggle toggleLeft">
             <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
@@ -55,56 +55,65 @@
       return {
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+        restricted: [],
         moment: moment(),
         selection: "",
-        active: false,
-        }
-      },
-      computed: {
-        filterDate() {
-          var _self = this
-          return this.month.map(function(e) {
-            var color = '#ACE496';
-            if ( e.format('M') != _self.moment.format('M') ) {
-              color = '#dcf4d3';
-            }
-
-            e['style'] = { backgroundColor: color }
-            return e
-          })
-        }
-      },
-      beforeMount() {
-        this.setDates();
-      },
-      methods: {
-        nextMonth(moment) {
-          this.moment = moment.clone().add(1, 'months');
-          this.setDates();
-          console.log('toggle forward', this.month);
-        },
-        lastMonth(moment) {
-          this.moment = moment.clone().subtract(1, 'months');
-          this.setDates();
-          console.log('toggle backward', this.month);
-        },
-        setDates() {
-          this.month = [];
-          var fun = this.moment.clone().startOf('month').startOf('week');
-          var end = this.moment.clone().endOf('month').endOf('week');
-          while (fun < end) {
-            this.month.push(fun.clone());
-            fun.add(1, 'day');
-          }
-        },
-        selectDate(date) {
-          this.selection = date.format('MM/DD/YYYY');
-          this.active = false;
-        },
-        focus() {
-          this.active = !this.active;
-        }
+        active: false
       }
+    },
+    computed: {
+      filterDate() {
+        var _self = this;
+        var caught = false;
+        return this.month.map(function(e) {
+          var color = '#ACE496';
+          if ( e.format('M') != _self.moment.format('M') && caught != true) {
+            color = '#dcf4d3';
+          }
+
+          e['style'] = { backgroundColor: color }
+          return e
+        })
+      }
+    },
+    beforeMount() {
+      this.setDates();
+      for (var i = 1; i <= 365; i++) {
+        this.restricted.push(moment().clone().add(i, 'd'));
+      }
+      for (var i = 365; i > 0; i--) {
+        this.restricted.push(moment().clone().subtract(i, 'd'));
+      }
+      console.log(this.restricted);
+    },
+    methods: {
+      nextMonth(moment) {
+        this.moment = moment.clone().add(1, 'months');
+        this.setDates();
+        console.log('toggle forward', this.month);
+      },
+      lastMonth(moment) {
+        this.moment = moment.clone().subtract(1, 'months');
+        this.setDates();
+        console.log('toggle backward', this.month);
+      },
+      setDates() {
+        this.month = [];
+        var fun = this.moment.clone().startOf('month').startOf('week');
+        var end = this.moment.clone().endOf('month').endOf('week');
+        while (fun < end) {
+          this.month.push(fun.clone());
+          fun.add(1, 'day');
+        }
+      },
+      selectDate(date) {
+        this.selection = date.format('MM/DD/YYYY');
+        this.active = false;
+      },
+      focus() {
+        this.active = !this.active;
+      }
+    }
   }
 </script>
 
@@ -121,6 +130,8 @@
 
   .input-group-addon {
     cursor: pointer;
+    color: #dcf4d3;
+    background-color: #5F7279;
   }
 
   .toggleContainer {
@@ -130,6 +141,7 @@
     display: flex;
     flex-flow: row wrap;
     flex-grow: 1;
+    color: #5F7279;
   }
 
   .toggleLeft {
@@ -148,7 +160,6 @@
     text-align: center;
     vertical-align: middle;
     line-height: 20px;
-    color: #FFFFFF;
   }
 
   .toggleRight {
@@ -175,6 +186,7 @@
     margin: 1px;
     border-radius: 2px;
     font-family: 'Archivo Black', sans-serif;
+    color: #5F7279;
   }
 
   .parent {
@@ -195,7 +207,7 @@
     vertical-align: middle;
     line-height: 40px;
     cursor: pointer;
-    color: #ADA397;
+    color: #5F7279;
   }
 
   .child:hover {
