@@ -72,22 +72,22 @@
         return this.month.map(function(e) {
           var color = '#ACE496';
           var borderColor = '1px solid #bdbdbd';
-          var available = false;
+          var cursorStyle = 'not-allowed';
           _self.availableDates.forEach(function(el) {
             if (el.format('LL') == e.format('LL')) {
-              // available = true;
-              // color = 'red';
               borderColor = '2px solid #5F7279';
+              cursorStyle = 'pointer';
             }
           });
           if ( e.unix() >= _self.datesRange[0]
                && e.unix() <= _self.datesRange[1] ) {
                  borderColor = '2px solid #5F7279';
+                 cursorStyle = 'pointer'
                }
           if (e.format('M') != _self.moment.format('M')) {
             color = '#dcf4d3';
           }
-          e['style'] = { backgroundColor: color, border: borderColor }
+          e['style'] = { backgroundColor: color, border: borderColor, cursor: cursorStyle }
           return e
         })
       }
