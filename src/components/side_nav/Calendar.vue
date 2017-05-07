@@ -56,6 +56,7 @@
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
         availableDates: [],
+        datesRange: [ moment().add(12, 'days').unix(), moment().add(18, 'days').unix() ],
         moment: moment(),
         selection: "",
         active: false
@@ -66,32 +67,33 @@
         var _self = this;
         return this.month.map(function(e) {
           var color = '#ACE496';
+          var borderColor = '1px solid #bdbdbd';
           var available = false;
           _self.availableDates.forEach(function(el) {
             if (el.format('LL') == e.format('LL')) {
-              available = true;
-              color = 'red';
+              // available = true;
+              // color = 'red';
+              borderColor = '2px solid #5F7279';
             }
           });
+          if ( e.unix() >= _self.datesRange[0]
+               && e.unix() <= _self.datesRange[1] ) {
+                 borderColor = '2px solid #5F7279';
+               }
           if (e.format('M') != _self.moment.format('M')) {
             color = '#dcf4d3';
           }
-          e['style'] = { backgroundColor: color }
+          e['style'] = { backgroundColor: color, border: borderColor }
           return e
         })
       }
     },
     beforeMount() {
       this.setDates();
-      // this.availableDates.push(this.moment.clone().add(1, 'd'));
-      // this.availableDates.push(this.moment.clone().add(2, 'd'));
-      for (var i = 1; i <= 365; i++) {
-        this.availableDates.push(this.moment.clone().add(i, 'd'));
-      }
-      for (var i = 365; i > 0; i--) {
-        this.availableDates.push(this.moment.clone().subtract(i, 'd'));
-      }
-      console.log(this.availableDates);
+      console.log('XZXZXZX', this.datesRange[0], this.datesRange[1])
+      this.availableDates.push(this.moment.clone().add(5, 'd'));
+      this.availableDates.push(this.moment.clone().add(6, 'd'));
+      this.availableDates.push(this.moment.clone().add(7, 'd'));
     },
     methods: {
       nextMonth(moment) {
