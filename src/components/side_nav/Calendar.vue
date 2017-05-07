@@ -35,11 +35,13 @@
         <div class="child"
              v-for="date in filterDate"
              @click="selectDate(date)"
-             :style="date.style">
+
+             :style="[date.style]">
           {{ date.format('D') }}
         </div>
       </div>
     </div>
+
 
   </div>
 </template>
@@ -55,16 +57,16 @@
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
         moment: moment(),
         selection: "",
-        active: false
+        active: false,
         }
       },
       computed: {
         filterDate() {
           var _self = this
           return this.month.map(function(e) {
-            var color = '#dcdcdc';
+            var color = '#ACE496';
             if ( e.format('M') != _self.moment.format('M') ) {
-              color = '#ffffff';
+              color = '#dcf4d3';
             }
 
             e['style'] = { backgroundColor: color }
@@ -100,11 +102,7 @@
           this.active = false;
         },
         focus() {
-          if (this.active == true) {
-            this.active = false;
-          } else if (this.active == false) {
-            this.active = true
-          }
+          this.active = !this.active;
         }
       }
   }
@@ -150,6 +148,7 @@
     text-align: center;
     vertical-align: middle;
     line-height: 20px;
+    color: #FFFFFF;
   }
 
   .toggleRight {
@@ -196,6 +195,11 @@
     vertical-align: middle;
     line-height: 40px;
     cursor: pointer;
+    color: #ADA397;
+  }
+
+  .child:hover {
+    background-color: #ED8A9A;
   }
 
 </style>
