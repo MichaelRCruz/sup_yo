@@ -2,32 +2,32 @@
   <div id="calendar" class="animated fadeInRight">
 
 
-    <div class="toggleContainer">
-        <div class="toggle toggleLeft">
-          <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
-        </div>
-        <div class="toggle currentMonth">
-          {{ this.moment.format('MMM') + this.moment.format(' YYYY') }}
-        </div>
-        <div class="toggle toggleRight">
-          <i @click="nextMonth(moment)" class="fa fa-arrow-circle-right"></i>
-        </div>
-    </div>
-
-    <div class="dayNameContainer">
-      <div class="dayNames" v-for="days in weekdays">
-        {{ days }}
+      <div class="toggleContainer">
+          <div class="toggle toggleLeft">
+            <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
+          </div>
+          <div class="toggle currentMonth">
+            {{ this.moment.format('MMM') + this.moment.format(' YYYY') }}
+          </div>
+          <div class="toggle toggleRight">
+            <i @click="nextMonth(moment)" class="fa fa-arrow-circle-right"></i>
+          </div>
       </div>
-    </div>
 
-    <div class="parent">
-      <div class="child"
-           v-for="date in filterDate"
-           @click="selectDate(date)"
-           :style="date.style">
-        {{ date.format('D') }}
+      <div class="dayNameContainer">
+        <div class="dayNames" v-for="days in weekdays">
+          {{ days }}
+        </div>
       </div>
-    </div>
+
+      <div class="parent">
+        <div class="child"
+             v-for="date in filterDate"
+             @click="selectDate(date)"
+             :style="date.style">
+          {{ date.format('D') }}
+        </div>
+      </div>
 
   </div>
 </template>
@@ -40,21 +40,20 @@
     data() {
       return {
         month: [],
-        weeks: [1, 2, 3, 4, 5],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
         moment: moment()
         }
       },
       computed: {
         filterDate() {
+          var _self = this
           return this.month.map(function(e) {
             var color = '#dcdcdc';
-            if (e.format('D') > 10) {
-              color = '#ffffff'
+            if ( e.format('M') != _self.moment.format('M') ) {
+              color = '#ffffff';
             }
 
             e['style'] = { backgroundColor: color }
-            console.log(e)
             return e
           })
         }
