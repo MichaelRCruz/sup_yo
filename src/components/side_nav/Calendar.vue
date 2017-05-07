@@ -2,16 +2,16 @@
   <div id="calendar" class="animated fadeInRight">
 
 
-    <div class="toggle">
-      <span>
-        <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
-      </span>
-      <span>
-        {{ this.moment.format('MMM') }}
-      </span>
-      <span>
-        <i @click="nextMonth(moment)" class="fa fa-arrow-circle-right"></i>
-      </span>
+    <div class="toggleContainer">
+        <div class="toggle toggleLeft">
+          <i @click="lastMonth(moment)" class="fa fa-arrow-circle-left"></i>
+        </div>
+        <div class="toggle currentMonth">
+          {{ this.moment.format('MMM') + this.moment.format(' YYYY') }}
+        </div>
+        <div class="toggle toggleRight">
+          <i @click="nextMonth(moment)" class="fa fa-arrow-circle-right"></i>
+        </div>
     </div>
 
     <div class="dayNameContainer">
@@ -21,7 +21,9 @@
     </div>
 
     <div class="parent">
-      <div class="child" v-for="date in month" @click="selectDate(date)">
+      <div class="child"
+           v-for="date in month"
+           @click="selectDate(date)">
         {{ date.format('D') }}
       </div>
     </div>
@@ -38,7 +40,7 @@
       return {
         month: [],
         weeks: [1, 2, 3, 4, 5],
-        weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
         moment: moment()
         }
       },
@@ -70,8 +72,8 @@
         }
       },
       computed: {
-        testFunction() {
-          console.log('Hello, world.');
+        testFunction(date) {
+          return date.format('MMM')
         }
       }
   }
@@ -84,15 +86,33 @@
     padding: 30px 30px 30px 0;
   }
 
-  .toggle {
-    border: 1px solid black;
+  .toggleContainer {
     width: 307px;
     height: 20px;
     margin-bottom: 5px;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+  }
+
+  .toggleLeft {
+    text-align: left;
+    flex: 1;
+    margin-left: 15px;
+  }
+
+  .currentMonth {
+    text-align: center;
+    flex: 1
+  }
+
+  .toggleRight {
+    text-align: right;
+    flex: 1;
+    margin-right: 15px;
   }
 
   .dayNameContainer {
-    border: 1px solid black;
     width: 307px;
     height: 24px;
     display: flex;
@@ -102,9 +122,8 @@
 
   .dayNames {
     margin-right: 14px;
-    font: monospace;
+    text-align: center;
     flex: 1 0 12.2%;
-    border: 1px solid #bdbdbd;
     height: 20px;
     margin: 1px;
     border-radius: 2px;
@@ -121,7 +140,11 @@
     border: 1px solid #bdbdbd;
     height: 40px;
     margin: 1px;
+    background-color: #dcdcdc;
     border-radius: 2px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
   }
 
 </style>
