@@ -8,7 +8,7 @@
         <div class="input-group-addon" @click="focus()">
           <i class="fa fa-calendar"></i>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="MM/DD/YYYY" :value="this.selection" @click="focus()">
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="MM/DD/YYYY" :value="this.selectionDisplay" @click="focus()">
       </div>
     </form>
 
@@ -58,7 +58,8 @@
         availableDates: [],
         datesRange: [ moment().add(12, 'days').unix(), moment().add(18, 'days').unix() ],
         moment: moment(),
-        selection: "",
+        selectionDisplay: "",
+        selection: {},
         active: false
       }
     },
@@ -90,10 +91,7 @@
     },
     beforeMount() {
       this.setDates();
-      console.log('XZXZXZX', this.datesRange[0], this.datesRange[1])
-      this.availableDates.push(this.moment.clone().add(5, 'd'));
-      this.availableDates.push(this.moment.clone().add(6, 'd'));
-      this.availableDates.push(this.moment.clone().add(7, 'd'));
+      console.log('Date Range: ', this.datesRange[0], this.datesRange[1]);
     },
     methods: {
       nextMonth(moment) {
@@ -110,14 +108,18 @@
         this.month = [];
         var fun = this.moment.clone().startOf('month').startOf('week');
         var end = this.moment.clone().endOf('month').endOf('week');
-        while (fun < end) {
+        while ( fun < end ) {
           this.month.push(fun.clone());
           fun.add(1, 'day');
         }
       },
       selectDate(date) {
-        this.selection = date.format('MM/DD/YYYY');
-        this.active = false;
+        if ( date.unix() >= this.datesRange[0]
+             && date.unix() <= this.datesRange[1] ) {
+          this.selectionDisplay = date.format('MM/DD/YYYY');
+          this.selection = date;
+          this.active = false;
+        }
       },
       focus() {
         this.active = !this.active;
