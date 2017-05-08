@@ -1,11 +1,11 @@
 <template lang="html">
   <div id="calendar">
 
-    <div>
+    <div @click="setRange()">
         <vue-slider id="slider"
                     ref="slider"
-                    v-bind="sliderOptions"
-                    v-model="sliderOptions.value">
+                    v-bind="slider"
+                    v-model="slider.value">
         </vue-slider>
     </div>
 
@@ -66,36 +66,45 @@
       return {
         month: [],
         weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-        availableDates: [moment().subtract(1, "month"), moment().add(1, "month")],
-        datesRange: [ moment().add(12, 'days').unix(), moment().add(18, 'days').unix() ],
+        availableDates: [],
+        datesRange: [ null, null ],
         moment: moment(),
         selectionDisplay: "",
         selection: {},
         active: false,
-        sliderOptions: {
+        slider: {
           value: [
-            0,
-            100
+            -5,
+            5
           ],
           width: "100%",
           height: 8,
           dotSize: 16,
-          min: 0,
-          max: 500,
+          min: -30,
+          max: 30,
           disabled: false,
           show: true,
           tooltip: "always",
-          // formatter: "¥{value}",
+          formatter: "{value} days",
           bgStyle: {
-            "backgroundColor": "#fff",
+            "backgroundColor": "#dcf4d3",
             "boxShadow": "inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)"
           },
+          sliderStyle: [
+            {
+              "backgroundColor": "#ACE496"
+            },
+            {
+              "backgroundColor": "#ACE496"
+            }
+          ],
           tooltipStyle: {
-            "backgroundColor": "#666",
-            "borderColor": "#666"
+            "backgroundColor": "#5F7279",
+            "borderColor": "#5F7279"
           },
           processStyle: {
-            "backgroundColor": "#999"
+            "backgroundColor": "#ACE496",
+            // "boxShadow": "inset 0.5px 0.5px 3px 1px rgba(0,0,0,.36)"
           }
         }
       }
@@ -103,38 +112,40 @@
     computed: {
       filterDate() {
         var _self = this;
-        return this.month.map(function(e) {
-          var color = '#ACE496';
-          var borderColor = '1px solid #bdbdbd';
-          var cursorStyle = 'not-allowed';
-          _self.availableDates.forEach(function(el) {
-            if (el.format('LL') == e.format('LL')) {
-              borderColor = '2px solid #5F7279';
-              cursorStyle = 'pointer';
+        if (this.active) {
+          return this.month.map(function(e) {
+            var color = '#ACE496';
+            var borderColor = '1px solid #bdbdbd';
+            var cursorStyle = 'not-allowed';
+            _self.availableDates.forEach(function(el) {
+              if (el.format('LL') == e.format('LL')) {
+                borderColor = '2px solid #5F7279';
+                cursorStyle = 'pointer';
+              }
+            });
+            if ( e.unix() >= _self.datesRange[0]
+                 && e.unix() <= _self.datesRange[1] ) {
+                   borderColor = '2px solid #5F7279';
+                   cursorStyle = 'pointer'
+                 }
+            if (e.format('M') != _self.moment.format('M')) {
+              color = '#dcf4d3';
             }
-          });
-          if ( e.unix() >= _self.datesRange[0]
-               && e.unix() <= _self.datesRange[1] ) {
-                 borderColor = '2px solid #5F7279';
-                 cursorStyle = 'pointer'
-               }
-          if (e.format('M') != _self.moment.format('M')) {
-            color = '#dcf4d3';
-          }
-          e['style'] = { backgroundColor: color,
-                         border: borderColor,
-                         cursor: cursorStyle
-                       }
-          return e
-        })
+            e['style'] = { backgroundColor: color,
+                           border: borderColor,
+                           cursor: cursorStyle
+                         }
+            return e
+          })
+        }
       }
-    },
-    components: {
-      vueSlider
     },
     beforeMount() {
       this.setDates();
-      console.log('Date Range: ', this.datesRange[0], this.datesRange[1]);
+      this.setRange();
+    },
+    components: {
+      vueSlider
     },
     methods: {
       nextMonth(moment) {
@@ -155,6 +166,15 @@
           this.month.push(fun.clone());
           fun.add(1, 'day');
         }
+      },
+      setRange() {
+        this.datesRange[0] = this.moment.clone()
+                                        .add(this.slider.value[0] - 1, 'days')
+                                        .unix();
+        this.datesRange[1] = this.moment.clone()
+                                        .add(this.slider.value[1], 'days')
+                                        .unix();
+        this.active = false;
       },
       selectDate(date) {
         var _self = this;
